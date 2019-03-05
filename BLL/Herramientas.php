@@ -1013,8 +1013,9 @@ function  buscarTraslado($Cod){
 
 
 function BuscarTiempoRealHerramienta($consulta){
-     $bdHerramienta = new MHerramientas();
+    $bdHerramienta = new MHerramientas();
     $result = $bdHerramienta->BuscarTiempoRealHerramienta($consulta);
+    //echo $result;
     if (mysqli_num_rows($result)>0) {
         $concatenar="";
         while($fila = mysqli_fetch_array($result,MYSQLI_ASSOC)){

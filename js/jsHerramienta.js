@@ -1524,6 +1524,7 @@ function  BuscarTiempoRealHerramienta(consulta) {
     $("#BoletaReparacionHerramienta").hide();
     $("#mostrarTablaReparaciones").hide();
 
+    console.log("Entrar Tiempor Real")
     $.ajax({
         type: "POST",
         url: "../BLL/Herramientas.php?opc=buscarTiempoReal",
