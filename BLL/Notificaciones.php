@@ -1,5 +1,5 @@
 <?php
-require_once '..//DAL/Conexion.php';
+/*require_once '..//DAL/Conexion.php';
 require_once '..//DAL/Interfaces/INotificaciones.php';
 require_once '..//DAL/Metodos/MNotificaciones.php';
 
@@ -27,4 +27,4 @@ function NotificarUsuarioBodega(){
     }
     print json_encode($arreglo);      
 }
-?>
+?>*/

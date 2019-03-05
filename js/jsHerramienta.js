@@ -371,6 +371,7 @@ function GuardarHerramienta() {
     var validarfecha = $('#txtFechaRegistroH').val()
     var validartipo = $('#comboHerramientaTipoH').val()
     var validarprecio = $('#txtPrecioH').val()
+    
     var datos = {
         "Codigo": $('#txtCodigoH2').val(),
         "Descripcion": $('#txtDescripcionH').val(),
@@ -378,8 +379,14 @@ function GuardarHerramienta() {
         "Procedencia": $('#txtProcedenciaH').val(),
         "Fecha": $('#txtFechaRegistroH').val(),
         "Tipo": $('#comboHerramientaTipoH').val(),
-        "Precio": $('#txtPrecioH').val()
+        "Precio": $('#txtPrecioH').val(),
+        "NumFactura" : $('#txtNumFacturaH').val()
     };
+
+console.log($('#txtNumFacturaH').val());
+
+alert($('#txtNumFacturaH').val());
+
 
     // Valida el campo de la Descripcion
 

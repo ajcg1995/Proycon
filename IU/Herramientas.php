@@ -211,7 +211,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
                 </div>
 
 
-                <!--Modal Agregar Herramienta -->
+                <!----  Modal Agregar Herramienta ----> 
 
                 <div id="ModalAgregarHerramienta" class="modal fade" role="dialog">   
                     <div class="modal-dialog">
@@ -308,6 +308,13 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
                                             </select>
 
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">    
+                                        <label class="col-lg-2">Num. Factura</label> 
+                                        <div class="col-md-6">
+                                            <input type="text" name="txtNumFacturaH" id="txtNumFacturaH" class=" form-control " placeholder="Numero de Factura"/>
                                         </div>
                                     </div>
 

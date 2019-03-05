@@ -195,10 +195,10 @@ class MHerramientas implements IHerrramientas {
 		return 0;
 		} else {
 		
-        $sql = "Insert into tbl_herramientaelectrica(ID_Tipo,Codigo,Marca,Descripcion,FechaIngreso,Estado,Disposicion,Procedencia,Ubicacion,Precio) values(
+        $sql = "Insert into tbl_herramientaelectrica(ID_Tipo,Codigo,Marca,Descripcion,FechaIngreso,Estado,Disposicion,Procedencia,Ubicacion,Precio,NumFactura) values(
 		
 		'"
-				. $Herramientas->Tipo . "','"
+		. $Herramientas->Tipo . "','"
                 . $Herramientas->Codigo . "','"
                 . $Herramientas->Marca . "','"
                 . $Herramientas->Descripcion . "','"
@@ -207,13 +207,16 @@ class MHerramientas implements IHerrramientas {
                 . $Herramientas->Disposicion . "','"
                 . $Herramientas->Procedencia . "','"
                 . $Herramientas->Ubicacion . "','"
-                . $Herramientas->Precio . "')";
+                . $Herramientas->Precio . "','"
+                . $Herramientas->NumFactura . "')"
+                ;
        
         $result = $conn->query($sql);
        
 		
 		$conn->close();
-        return $result;
+        //return $result;
+                return $sql;
 		}
 		
 		

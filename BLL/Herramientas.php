@@ -798,15 +798,18 @@ function RegistrarHerramientas(){
 	$herramienta = new Herramientas();
 	$bdHerramienta = new MHerramientas();
 	$herramienta ->Descripcion =$_POST['Descripcion'];
-    $herramienta ->Codigo =$_POST['Codigo'];
+        $herramienta ->Codigo =$_POST['Codigo'];
 	$herramienta ->Fecha =$_POST['Fecha'];
 	$herramienta ->Estado ="1";                         
 	$herramienta ->Disposicion ="1";                  
 	$herramienta ->Tipo =$_POST['Tipo'];
 	$herramienta ->Marca =$_POST['Marca'];
 	$herramienta ->Procedencia =$_POST['Procedencia'];
-	$herramienta ->Ubicacion ="1";    
-    $herramienta ->Precio =$_POST['Precio'];	
+	$herramienta ->Ubicacion  = "1";    
+        $herramienta ->Precio     = $_POST['Precio'];
+        $herramienta ->NumFactura = $_POST['NumFactura'];
+        
+        
 	echo $bdHerramienta ->RegistrarHerramientas($herramienta);
 	
 }
