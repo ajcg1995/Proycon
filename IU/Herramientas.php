@@ -466,6 +466,25 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
                                         </td>					
                                     </tr>
+                                    
+                            <!-- --------------Nuevoooo --------------------- !--> 
+                                    <tr>
+                                        <td class ="translado">
+                                            <h4>Num Factura Herramienta:
+                                                <span id ="numFactHerramienta">  </span>  
+                                            </h4>
+
+                                        <td>
+                                        <td class ="translado">
+                                            <h4>Precio Herramienta:
+                                                <span id ="precioHerramienta">  </span>  
+                                            </h4>						
+
+                                        </td>					
+                                    </tr>
+                                    
+                            <!-- --------------Nuevoooo --------------------- !-->  
+                                
                                 </table>
 
                             </div>

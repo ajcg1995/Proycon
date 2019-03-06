@@ -512,7 +512,7 @@ class MHerramientas implements IHerrramientas {
 	  public function InfoHerramienta($codigo){
         $conexion = new Conexion();
         $conn = $conexion->CrearConexion();
-        $sql = "select Codigo, Marca,Descripcion, FechaIngreso, Procedencia from tbl_herramientaelectrica where Codigo = '$codigo' ";
+        $sql = "select Codigo, Marca,Descripcion, FechaIngreso, Procedencia, Precio, NumFactura from tbl_herramientaelectrica where Codigo = '$codigo' ";
         $resultado = $conn->query($sql);
         $conn->close();
         return $resultado;  

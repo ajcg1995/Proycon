@@ -757,16 +757,22 @@ function MostrarHistorial()
             var Cadena = informacion.split(";");
             var Codigo = Cadena[0];
             var Marca = Cadena[3];
-            ;
+            
             var Descripcion = Cadena[1];
             var Fecha = Cadena[4];
-            var Procedencia = Cadena[2];
+            var Procedencia = Cadena[2];       
+            
+            var precio = Cadena[5];
+            var numFactura = Cadena[6];
 
             $("#NombreHerramienta").html(Codigo);
             $("#FechaAdquisicion").html(Marca);
             $("#HerramientaMarca").html(Descripcion);
             $("#ProcedenciaHerramienta").html(Fecha);
             $("#DescripcionHerramienta").html(Procedencia);
+            
+            $("#numFactHerramienta").html(numFactura);
+            $("#precioHerramienta").html(precio);
 
         }
     })

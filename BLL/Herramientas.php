@@ -978,7 +978,7 @@ function InfoHerramienta($codigo){
 	if ($resultado != null){
 		$herramienta = '';
           while ($fila = mysqli_fetch_array($resultado,MYSQLI_ASSOC)){
-            $herramienta = $fila['Codigo'].";".$fila['Marca'].";".$fila['Descripcion'].";".$fila['FechaIngreso'].";".$fila['Procedencia']; 	
+            $herramienta = $fila['Codigo'].";".$fila['Marca'].";".$fila['Descripcion'].";".$fila['FechaIngreso'].";".$fila['Procedencia'] . ";" . $fila['Precio'] .";".$fila['NumFactura'].";"; 	
          }
           echo $herramienta;
 		 
