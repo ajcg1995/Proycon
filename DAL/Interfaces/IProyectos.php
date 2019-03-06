@@ -31,6 +31,8 @@ interface IProyectos {
   public function ObtenerNombreProyecto($ID_Proyecto);
   public function NombreProyecto($id);
   public function FinalizarProyecto($ID_Proyecto);
+  public function HerramientaPorId($idProyecto, $idHerramienta);
+  public function ListarSoloHerramienta($idProyecto);
  
 
   

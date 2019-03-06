@@ -72,6 +72,10 @@ DevolucionMaterial();
 }
  elseif ($_GET['opc']== "modificarProyecto") {
     ModificarProyecto();
+}elseif ($_GET['opc']== "buscarHerramientaProyecto") {
+    buscarHerramientaPorProyecto($_POST['idProyecto'],$_POST['idHerramienta']);
+}elseif ($_GET['opc']== "listarSoloHerramienta") {
+    listarSoloHerramienta($_POST['idProyecto']);
 }
 }
 
@@ -221,17 +225,29 @@ $combobox = '<div class="form-group">
                                  <option value = "Fecha">Fecha</option>
                                  <option value ="Ver Totales">Ver Totales</option>
                                  <option value ="Reparacion">Reparacion</option>
+                                 <option value ="Tipo">Tipo</option>
                                  
                              </select>
                         </div>';
+$buscarHerramientatxt = '<div class="input-group">
+					  
+                          <input id="txtCodigoHerraP" name="txtCodigoHerraP" type="text" class="form-control" placeholder="Código" onclick="" onchange="FiltroInicioHerramienta()">
+                          <span class="input-group-btn">
+                                <button id="btnBuscarCodigo" class="btn btn-default" type="button" onclick="BuscarHerramientasPorCodigoP()"><img src="../resources/imagenes/icono_buscar.png" width="18px" alt=""/></button>
+			  </span>							
+                       </div>';
+
 $form = "<form action='../BLL/ReportesExcel.php' method='POST'>";
 
-
 $concatenar .= $form.'<section id="herramientas" class="materiales">';
-$concatenar.="<input type='hidden' name='txtID_Proyecto' value='$idProyecto' />"
+$concatenar.="<input type='hidden' name='txtID_Proyecto' id='txtID_Proyecto' value='$idProyecto' />"
         . "<input type='hidden' name='txtReporteHerramientasP' value='1' />";
 $concatenar .= '<button class=" btn btn-default btnExpandir" type="button" value="" onclick="ExpandirMateriales(0)" >Expandir  <img src="../resources/imagenes/Expandir.png" width="20px" alt=""/></button>' . ' <div class="titulomaterialesherramienta"><h4>Herramientas</h4></div> ' .
-$btnImprimir . $combobox;
+
+        
+        $btnImprimir . $combobox.
+        $buscarHerramientatxt;    
+
 $concatenar .= " <div id='tablaHerramientas'> <table class=' table table-bordered table-responsive tablasG' id='tbl_herramientasProyecto'>"
 . "<thead>"
 . " <tr>"
@@ -609,6 +625,40 @@ $concatenar .= "</tbody></table></section>";
 echo $concatenar;
 }  
 }
+if ($Filtro == "Tipo") {
+$sql = "SELECT tp.Codigo,tt.Descripcion,tp.FechaSalida, th.Estado, tp.NBoleta FROM tbl_prestamoherramientas tp, tbl_herramientaelectrica th, tbl_tipoherramienta tt where 
+ tp.ID_Proyecto = $ID_Proyecto and tp.ID_Tipo = tt.ID_Tipo and tp.Codigo =  th.Codigo ORDER BY tt.Descripcion;";
+
+$result = $bdProyectos->FiltrosHerramientasProyecto($sql);
+if ($result != null) {
+$concatenar = " <table class='tablasG' id='tbl_herramientasProyecto'>"
+. "<thead>"
+. " <tr>"
+. " <th>Codigo</th>"
+. " <th class='centrar'> Tipo </th>"
+. "<th class='centrar'> Fecha </th>"
+. "<th class='centrar'>NBoleta </th>"
+. "<th class='centrar'>Estado</th>"
+. "</tr>"
+. "</thead>"
+. "<tbody>";
+$imagen = '';
+
+while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+if ($fila['Estado'] == 1) {
+$imagen = "Bueno";
+$concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $fila['FechaSalida'] . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
+} else {
+$imagen = "En reparacion";
+$concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $fila['FechaSalida'] . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
+}
+}
+
+$concatenar .= "</tbody></table></section>";
+
+echo $concatenar;
+}
+}
 }
 
 function CrearTablaFiltros($result) {
@@ -835,4 +885,74 @@ function BuscarProyectoID($ID){
    }
     
 }
- 
+
+function buscarHerramientaPorProyecto($idProyecto, $idHerramienta) {
+    $bdProyecto = new MProyectos();
+    $result = $bdProyecto->HerramientaPorId($idProyecto, $idHerramienta);
+
+    if ($result != null) {
+
+
+        $concatenar = " <table class='tablasG' id='tbl_herramientasProyecto'>"
+                . "<thead>"
+                . " <tr>"
+                . " <th>Codigo</th>"
+                . " <th class='centrar'> Tipo </th>"
+                . "<th class='centrar'> Fecha </th>"
+                . "<th class='centrar'>NBoleta </th>"
+                . "<th class='centrar'>Estado</th>"
+                . "</tr>"
+                . "</thead>"
+                . "<tbody>";
+
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            if ($fila['Estado'] == 1) {
+                $imagen = "Bueno";
+                $concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $fila['FechaSalida'] . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
+            } else {
+                $imagen = "En reparacion";
+                $concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $fila['FechaSalida'] . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
+            }
+        }
+            $concatenar .= "</tbody></table></section>";
+            echo $concatenar;
+    }
+    
+        
+}
+
+
+function listarSoloHerramienta($idProyecto) {
+    $bdProyecto = new MProyectos();
+    $result = $bdProyecto->ListarSoloHerramienta($idProyecto);
+
+    if ($result != null) {
+
+
+        $concatenar = " <table class='tablasG' id='tbl_herramientasProyecto'>"
+                . "<thead>"
+                . " <tr>"
+                . " <th>Codigo</th>"
+                . " <th class='centrar'> Tipo </th>"
+                . "<th class='centrar'> Fecha </th>"
+                . "<th class='centrar'>NBoleta </th>"
+                . "<th class='centrar'>Estado</th>"
+                . "</tr>"
+                . "</thead>"
+                . "<tbody>";
+
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            if ($fila['Estado'] == 1) {
+                $imagen = "Bueno";
+                $concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $fila['FechaSalida'] . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
+            } else {
+                $imagen = "En reparacion";
+                $concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $fila['FechaSalida'] . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
+            }
+        }
+            $concatenar .= "</tbody></table></section>";
+            echo $concatenar;
+    }
+    
+        
+}

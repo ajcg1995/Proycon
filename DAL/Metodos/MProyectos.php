@@ -301,5 +301,24 @@ class MProyectos implements IProyectos {
         $this->conn->close();
         return $result;    
     }
+    
+    public function HerramientaPorId($idProyecto, $idHerramienta) {
+
+        $sql = "SELECT tp.Codigo,tt.Descripcion,tp.FechaSalida, th.Estado, tp.NBoleta FROM tbl_prestamoherramientas tp, tbl_herramientaelectrica th, tbl_tipoherramienta tt where 
+            tp.ID_Proyecto = $idProyecto and tp.ID_Tipo = tt.ID_Tipo and tp.Codigo =  th.Codigo and tp.Codigo = '$idHerramienta'";
+        $result = $this->conn->query($sql);
+        $this->conn->close();
+        return $result;
+    }
+    
+    
+    public function ListarSoloHerramienta($idProyecto) {
+
+        $sql = "SELECT tp.Codigo,tt.Descripcion,tp.FechaSalida, th.Estado, tp.NBoleta FROM tbl_prestamoherramientas tp, tbl_herramientaelectrica th, tbl_tipoherramienta tt where 
+            tp.ID_Proyecto = $idProyecto and tp.ID_Tipo = tt.ID_Tipo and tp.Codigo =  th.Codigo";
+        $result = $this->conn->query($sql);
+        $this->conn->close();
+        return $result;
+    }
 
 }

@@ -13,7 +13,6 @@ class Conexion {
         else{
         return $connect;
         }
-
     }
 
 }
