@@ -467,7 +467,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
                                         </td>					
                                     </tr>
                                     
-                            <!-- --------------Nuevoooo --------------------- !--> 
+                            <!-- ----------------Nuevoooo --------------------- !--> 
                                     <tr>
                                         <td class ="translado">
                                             <h4>Num Factura Herramienta:
