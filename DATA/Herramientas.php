@@ -9,12 +9,16 @@ class Herramientas {
     public $ubicacion;
     public $procedencia;
     public $precio;
-            function Herramientas() {
+    public $numFactura;
+    
+    function Herramientas() {
         
     }
+    
     function getCodigo() {
         return $this->codigo;
     }
+
     function getProcedencia() {
         return $this->procedencia;
     }
@@ -31,7 +35,7 @@ class Herramientas {
         $this->precio = $precio;
     }
 
-        function getTipo() {
+    function getTipo() {
         return $this->tipo;
     }
 
@@ -74,6 +78,15 @@ class Herramientas {
     function setUbicacion($ubicacion) {
         $this->ubicacion = $ubicacion;
     }
+
+    function getNumFactura() {
+        return $this->numFactura;
+    }
+
+    function setNumFactura($numFactura) {
+        $this->numFactura = $numFactura;
+    }
+
 
 
 

@@ -1103,6 +1103,7 @@ function FiltrarMateriales() {
 function FiltrarHerramientas() {
     var ID_Proyecto = $("#idProecto").html();
     var Fitro = $("#cboFiltrarHerramientas").val();
+    
     $.ajax({
         type: "POST",
         url: "../BLL/Proyectos.php?opc=Fitrar&tipo=herramienta",
@@ -1648,7 +1649,81 @@ function MostarMoldalLoanding(){
     $("#ModalLoanding").modal("show");
 }
 
+function BuscarHerramientasPorCodigoP() {
+    
+    var idProyecto = $("#txtID_Proyecto").val();
+    var idHerramienta = $("#txtCodigoHerraP").val();
+    
+    
+    var datos = {
+        "idProyecto" : idProyecto,
+        "idHerramienta" : idHerramienta    
+    };
+    
+    $.ajax({
+        data: datos,
+        type: "POST",
+        url: "../BLL/Proyectos.php?opc=buscarHerramientaProyecto",
+        success: function (respuesta) {
+            $("#tablaHerramientas").html(respuesta);
+            console.log(respuesta);
+        }
 
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
+}
+
+function FiltroInicioHerramienta() {
+    var idProyecto = $("#txtID_Proyecto").val();
+    
+    var inicio = $("#txtCodigoHerraP").val();
+    if (inicio == "") {
+        listarSoloHerramienta(idProyecto);
+    }
+
+}
+
+function listarSoloHerramienta(idProyecto){
+    
+    var idProyecto = $("#txtID_Proyecto").val();
+    
+     var datos = {
+        "idProyecto" : idProyecto  
+    };
+    
+    $.ajax({
+        data: datos,
+        type: "POST",
+        url: "../BLL/Proyectos.php?opc=listarSoloHerramienta",
+        success: function (respuesta) {
+            $("#tablaHerramientas").html(respuesta);
+        }
+
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+        } else if (jqXHR.status == 404) {
+            alert('Error [404] No se encontro el Archivo');
+        } else if (jqXHR.status == 500) {
+            alert('Error de conexion con el servidor');
+        }
+    });   
+    
+}
 
 
 

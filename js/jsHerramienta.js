@@ -371,6 +371,7 @@ function GuardarHerramienta() {
     var validarfecha = $('#txtFechaRegistroH').val()
     var validartipo = $('#comboHerramientaTipoH').val()
     var validarprecio = $('#txtPrecioH').val()
+    
     var datos = {
         "Codigo": $('#txtCodigoH2').val(),
         "Descripcion": $('#txtDescripcionH').val(),
@@ -378,8 +379,14 @@ function GuardarHerramienta() {
         "Procedencia": $('#txtProcedenciaH').val(),
         "Fecha": $('#txtFechaRegistroH').val(),
         "Tipo": $('#comboHerramientaTipoH').val(),
-        "Precio": $('#txtPrecioH').val()
+        "Precio": $('#txtPrecioH').val(),
+        "NumFactura" : $('#txtNumFacturaH').val()
     };
+
+console.log($('#txtNumFacturaH').val());
+
+alert($('#txtNumFacturaH').val());
+
 
     // Valida el campo de la Descripcion
 
@@ -750,16 +757,22 @@ function MostrarHistorial()
             var Cadena = informacion.split(";");
             var Codigo = Cadena[0];
             var Marca = Cadena[3];
-            ;
+            
             var Descripcion = Cadena[1];
             var Fecha = Cadena[4];
-            var Procedencia = Cadena[2];
+            var Procedencia = Cadena[2];       
+            
+            var precio = Cadena[5];
+            var numFactura = Cadena[6];
 
             $("#NombreHerramienta").html(Codigo);
             $("#FechaAdquisicion").html(Marca);
             $("#HerramientaMarca").html(Descripcion);
             $("#ProcedenciaHerramienta").html(Fecha);
             $("#DescripcionHerramienta").html(Procedencia);
+            
+            $("#numFactHerramienta").html(numFactura);
+            $("#precioHerramienta").html(precio);
 
         }
     })
@@ -1524,6 +1537,7 @@ function  BuscarTiempoRealHerramienta(consulta) {
     $("#BoletaReparacionHerramienta").hide();
     $("#mostrarTablaReparaciones").hide();
 
+    console.log("Entrar Tiempor Real")
     $.ajax({
         type: "POST",
         url: "../BLL/Herramientas.php?opc=buscarTiempoReal",

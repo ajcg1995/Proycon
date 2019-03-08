@@ -710,20 +710,24 @@ function RegistrarTipoHerramienta() {
 
 // Registra las Herramientas
 
-function RegistrarHerramientas() {
-    $herramienta = new Herramientas();
-    $bdHerramienta = new MHerramientas();
-    $herramienta->Descripcion = $_POST['Descripcion'];
-    $herramienta->Codigo = $_POST['Codigo'];
-    $herramienta->Fecha = $_POST['Fecha'];
-    $herramienta->Estado = "1";
-    $herramienta->Disposicion = "1";
-    $herramienta->Tipo = $_POST['Tipo'];
-    $herramienta->Marca = $_POST['Marca'];
-    $herramienta->Procedencia = $_POST['Procedencia'];
-    $herramienta->Ubicacion = "1";
-    $herramienta->Precio = $_POST['Precio'];
-    echo $bdHerramienta->RegistrarHerramientas($herramienta);
+function RegistrarHerramientas(){
+	$herramienta = new Herramientas();
+	$bdHerramienta = new MHerramientas();
+	$herramienta ->Descripcion =$_POST['Descripcion'];
+        $herramienta ->Codigo =$_POST['Codigo'];
+	$herramienta ->Fecha =$_POST['Fecha'];
+	$herramienta ->Estado ="1";                         
+	$herramienta ->Disposicion ="1";                  
+	$herramienta ->Tipo =$_POST['Tipo'];
+	$herramienta ->Marca =$_POST['Marca'];
+	$herramienta ->Procedencia =$_POST['Procedencia'];
+	$herramienta ->Ubicacion  = "1";    
+        $herramienta ->Precio     = $_POST['Precio'];
+        $herramienta ->NumFactura = $_POST['NumFactura'];
+        
+        
+	echo $bdHerramienta ->RegistrarHerramientas($herramienta);
+	
 }
 
 function ConsecutivoReparacion() {
@@ -874,14 +878,19 @@ function InfoHerramienta($codigo) {
     $bdHerramienta = new MHerramientas();
     $resultado = $bdHerramienta->InfoHerramienta($codigo);
 
-
-    if ($resultado != null) {
-        $herramienta = '';
-        while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-            $herramienta = $fila['Codigo'] . ";" . $fila['Marca'] . ";" . $fila['Descripcion'] . ";" . $fila['FechaIngreso'] . ";" . $fila['Procedencia'];
-        }
-        echo $herramienta;
-    }
+	$bdHerramienta = new MHerramientas();	
+    $resultado = $bdHerramienta-> InfoHerramienta($codigo);
+ 
+ 
+	if ($resultado != null){
+		$herramienta = '';
+          while ($fila = mysqli_fetch_array($resultado,MYSQLI_ASSOC)){
+            $herramienta = $fila['Codigo'].";".$fila['Marca'].";".$fila['Descripcion'].";".$fila['FechaIngreso'].";".$fila['Procedencia'] . ";" . $fila['Precio'] .";".$fila['NumFactura'].";"; 	
+         }
+          echo $herramienta;
+		 
+          
+    }	 
 }
 
 function buscarTraslado($Cod) {
@@ -911,21 +920,23 @@ function buscarTraslado($Cod) {
     }
 }
 
-function BuscarTiempoRealHerramienta($consulta) {
+
+function BuscarTiempoRealHerramienta($consulta){
     $bdHerramienta = new MHerramientas();
     $result = $bdHerramienta->BuscarTiempoRealHerramienta($consulta);
-    if (mysqli_num_rows($result) > 0) {
-        $concatenar = "";
-        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $concatenar .= "<tr>
-                    <td>" . $fila['Codigo'] . "</td>
-                    <td>" . $fila['Tipo'] . "</td>
-                     <td>" . $fila['Descripcion'] . "</td>
-                    <td>" . $fila['FechaIngreso'] . "</td>
-					<td>" . $fila['Precio'] . "</td>
-                    <td>" . $fila['Disposicion'] . "</td>
-                    <td>" . $fila['Nombre'] . "</td>
-                    <td>" . $fila['Estado'] . "</td>
+    //echo $result;
+    if (mysqli_num_rows($result)>0) {
+        $concatenar="";
+        while($fila = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+               $concatenar.="<tr>
+                    <td>".$fila['Codigo']."</td>
+                    <td>".$fila['Tipo']."</td>
+                     <td>".$fila['Descripcion']."</td>
+                    <td>".$fila['FechaIngreso']."</td>
+					<td>".$fila['Precio']."</td>
+                    <td>".$fila['Disposicion']."</td>
+                    <td>".$fila['Nombre']."</td>
+                    <td>".$fila['Estado']."</td>
                 </tr>";
         }
         echo $concatenar;
