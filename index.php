@@ -4,6 +4,12 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<?php
+        $_SESSION['Usuario']=null;
+	$_SESSION['Nombre']=null;
+	$_SESSION['ID_Usuario']=null;
+	$_SESSION['ID_ROL']=null;
+?>
 <html>
     <head>
         		<link rel="icon" href="resources\imagenes\favicon.ico"  type="image/x-icon">
