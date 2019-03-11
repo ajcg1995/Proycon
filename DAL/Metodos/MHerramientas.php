@@ -523,10 +523,23 @@ class MHerramientas implements IHerrramientas {
     public function BuscarTiempoRealHerramienta($consulta) {
         $conexion = new Conexion();
         $conn = $conexion->CrearConexion();
+        
+        session_start();
+        if($_SESSION['ID_ROL'] == '4'){
+        $sql = "select Codigo, b.Descripcion as Tipo,a.Descripcion, FechaIngreso, IF(Disposicion = '1','Disponible','No Disponible')as Disposicion, c.Nombre,IF(a.Estado = '1','Buena','En Reparacion')as Estado,a.Estado as numEstado,Precio from tbl_herramientaelectrica a, tbl_tipoherramienta b, tbl_proyectos c where a.ID_Tipo = b.ID_Tipo and a.Ubicacion = c.ID_Proyecto and b.Descripcion LIKE '%".$consulta."%'";
+        $resultado = $conn->query($sql);
+        $conn->close();
+        return $resultado;     
+            
+        }else{
         $sql = "select Codigo, b.Descripcion as Tipo,a.Descripcion, FechaIngreso, IF(Disposicion = '1','Disponible','No Disponible')as Disposicion, c.Nombre,IF(a.Estado = '1','Buena','En Reparacion')as Estado,a.Estado as numEstado,Precio from tbl_herramientaelectrica a, tbl_tipoherramienta b, tbl_proyectos c where a.ID_Tipo = b.ID_Tipo and a.Ubicacion = c.ID_Proyecto and a.Disposicion = 1 and a.Estado = 1 and b.Descripcion LIKE '%".$consulta."%'";
         $resultado = $conn->query($sql);
         $conn->close();
-        return $resultado; 
+        return $resultado;             
+        }
+        
+        
+       
         //return ($sql);
         
     }
