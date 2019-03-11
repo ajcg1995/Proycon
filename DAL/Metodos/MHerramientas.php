@@ -537,11 +537,7 @@ class MHerramientas implements IHerrramientas {
         $conn->close();
         return $resultado;             
         }
-        
-        
-       
-        //return ($sql);
-        
+                
     }
 
     public function FiltrosHerramientas($Tipo, $Disposicion, $Estado, $Ubicacion) {
