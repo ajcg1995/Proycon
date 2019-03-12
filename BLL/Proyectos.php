@@ -161,11 +161,15 @@ echo 0;
 }
 
 function ObternerHyMProyecto($idProyecto) {
+    
  $_COOKIE['ID_Proyecto'] = $idProyecto;
 $bdProyectos = new MProyectos();
 /* Seccion de Materiales */
 
 $materiales = $bdProyectos->ListaMaterialesProyecto($idProyecto);
+
+
+
 $form = "<form action='../BLL/ReportesExcel.php' method='POST'>";
 $inputOcultos="<input type='hidden' name='txtID_ProyectoMateriales' value='$idProyecto' /> <input type='hidden' name='txtReporteMaterilesP' value='1' />";
 $concatenar = '<section id="materiales" class="materiales">';
@@ -201,11 +205,16 @@ $concatenar .= "<div id='tablaMateriales'> <table class=' table table-bordered t
 . "<tbody>";
 if ($materiales != null) {
 while ($fila = mysqli_fetch_array($materiales, MYSQLI_ASSOC)) {
+    
+$Fecha = date('d/m/Y',strtotime($fila['Fecha']));
+
+
+
 if ($fila['Devolucion'] == 1) {
-$concatenar .= "<tr><td>".$fila['Codigo']."</td><td>" . $fila['Nombre'] . "</td><td>" . $fila['Cantidad'] . "</td><td>" . $fila['Fecha'] . "</td><td>" . $fila['Consecutivo'] . "</td><td><a href='javascript:void(0);' onclick='DevolucionMaterial(this)'> <img src='../resources/imagenes/Editar.png' width='25px'/></a></td></tr>";
+$concatenar .= "<tr><td>".$fila['Codigo']."</td><td>" . $fila['Nombre'] . "</td><td>" . $fila['Cantidad'] . "</td><td>" . $Fecha . "</td><td>" . $fila['Consecutivo'] . "</td><td><a href='javascript:void(0);' onclick='DevolucionMaterial(this)'> <img src='../resources/imagenes/Editar.png' width='25px'/></a></td></tr>";
 }
 else{
-$concatenar .= "<tr><td>".$fila['Codigo']."</td><td>" . $fila['Nombre'] . "</td><td>" . $fila['Cantidad'] . "</td><td>" . $fila['Fecha'] . "</td><td>" . $fila['Consecutivo'] . "</td><td></td></tr>";
+$concatenar .= "<tr><td>".$fila['Codigo']."</td><td>" . $fila['Nombre'] . "</td><td>" . $fila['Cantidad'] . "</td><td>" . $Fecha . "</td><td>" . $fila['Consecutivo'] . "</td><td></td></tr>";
 }}
 }
 $concatenar .= "</tbody></table></div></div>";
@@ -264,13 +273,16 @@ if ($herramientas != null) {
 $imagen = '';
 
 while ($fila = mysqli_fetch_array($herramientas, MYSQLI_ASSOC)) {
+    
+    $Fecha = date('d/m/Y',strtotime($fila['FechaSalida']));
+    
 if ($fila['Estado'] == 1) {
 $imagen = "Bueno";
-$concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $fila['FechaSalida'] . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
+$concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $Fecha . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
 } else {
 
 $imagen = "En Reparacion";
-$concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $fila['FechaSalida'] . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
+$concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $Fecha . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
 }
 }
 }
@@ -346,12 +358,13 @@ if ($result != null) {
 $concaternar = "";
 
 while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $Fecha = date('d/m/Y',strtotime($fila['Fecha']));
 $concaternar .= "<div class='lospedido'>
                         <table>
                             <tbody>
                             <td hidden='true'>" . $fila['TipoPedido'] . "</td>
                             <td>" . $fila['Consecutivo'] . "</td>
-                            <td>" . $fila['Fecha'] . "</td>
+                            <td>" . $Fecha . "</td>
                             <td>" . $fila['Nombre'] . "</td>    
                             <td><a onclick='VerPedido(this)' href='#'>Ver</a></td>
                             </tbody>
@@ -556,12 +569,14 @@ $concatenar = " <table class='tablasG' id='tbl_herramientasProyecto'>"
 $imagen = '';
 
 while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $Fecha = date('d/m/Y',strtotime($fila['FechaSalida']));
+    
 if ($fila['Estado'] == 1) {
 $imagen = "Bueno";
-$concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $fila['FechaSalida'] . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
+$concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $Fecha . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
 } else {
 $imagen = "En reparacion";
-$concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $fila['FechaSalida'] . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
+$concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $Fecha . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
 }
 }
 
@@ -616,8 +631,9 @@ $concatenar = " <table class='tablasG' id='tbl_herramientasProyecto'>"
 $imagen = '';
 
 while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $Fecha = date('d/m/Y',strtotime($fila['FechaSalida']));
 $imagen = "En reparacion";
-$concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $fila['FechaSalida'] . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
+$concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $Fecha . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
 }
 
 $concatenar .= "</tbody></table></section>";
@@ -645,9 +661,10 @@ $concatenar = " <table class='tablasG' id='tbl_herramientasProyecto'>"
 $imagen = '';
 
 while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $Fecha = date('d/m/Y',strtotime($fila['FechaSalida']));
 if ($fila['Estado'] == 1) {
 $imagen = "Bueno";
-$concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $fila['FechaSalida'] . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
+$concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $Fecha . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
 } else {
 $imagen = "En reparacion";
 $concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $fila['FechaSalida'] . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
@@ -677,7 +694,8 @@ $concatenar = " <table class='tablasG' id='tbl_MaterialesProyecto'>"
 . "<tbody>";
 
 while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-$concatenar .= "<tr><td>".$fila['Codigo']."</td><td>" . $fila['Nombre'] . "</td><td>" . $fila['Cantidad'] . "</td><td>" . $fila['Fecha'] . "</td><td>" . $fila['Consecutivo'] . "</td>";
+    $Fecha = date('d/m/Y',strtotime($fila['Fecha']));
+$concatenar .= "<tr><td>".$fila['Codigo']."</td><td>" . $fila['Nombre'] . "</td><td>" . $fila['Cantidad'] . "</td><td>" . $Fecha . "</td><td>" . $fila['Consecutivo'] . "</td>";
 if ($fila['Devolucion'] == 1) {
   $concatenar .= "<td><a href='javascript:void(0);' onclick='DevolucionMaterial(this)'> <img src='../resources/imagenes/Editar.png' width='25px'/></a></td>";
 
@@ -702,9 +720,11 @@ $result = $bdProyectos->ColaPedidos($ID_Proyecto);
 if (mysqli_num_rows($result) > 0) {
 $concatenar = "";
 while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    
+    $Fecha = date('d/m/Y',strtotime($fila['Fecha']));
 $concatenar .= "     <tr>
                          <td>" . $fila['Consecutivo'] . "</td>
-                         <td>" . $fila['Fecha'] . "</td>
+                         <td>" . $Fecha . "</td>
                          <td>" . $fila['Nombre'] . "</td>
                          <td><button type='button' onclick='procesarPeido(this)' class='btn btn-success'>Procesar</button></td>
                      </tr>";
@@ -906,12 +926,13 @@ function buscarHerramientaPorProyecto($idProyecto, $idHerramienta) {
                 . "<tbody>";
 
         while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $Fecha = date('d/m/Y',strtotime($fila['FechaSalida']));
             if ($fila['Estado'] == 1) {
                 $imagen = "Bueno";
-                $concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $fila['FechaSalida'] . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
+                $concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $Fecha . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
             } else {
                 $imagen = "En reparacion";
-                $concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $fila['FechaSalida'] . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
+                $concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $Fecha . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
             }
         }
             $concatenar .= "</tbody></table></section>";
@@ -942,12 +963,13 @@ function listarSoloHerramienta($idProyecto) {
                 . "<tbody>";
 
         while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $Fecha = date('d/m/Y',strtotime($fila['FechaSalida']));
             if ($fila['Estado'] == 1) {
                 $imagen = "Bueno";
-                $concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $fila['FechaSalida'] . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
+                $concatenar .= "<tr><td>" . $fila['Codigo'] . "</td><td>" . $fila['Descripcion'] . "</td><td>" . $Fecha . "</td><td>" . $fila['NBoleta'] . "</td><td>" . $imagen . "</td></tr>";
             } else {
                 $imagen = "En reparacion";
-                $concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $fila['FechaSalida'] . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
+                $concatenar .= "<tr><td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td><td class='usuarioBolqueado' >" . $fila['Descripcion'] . "</td><td class='usuarioBolqueado' >" . $Fecha . "</td><td class='usuarioBolqueado' >" . $fila['NBoleta'] . "</td><td class='usuarioBolqueado' >" . $imagen . "</td></tr>";
             }
         }
             $concatenar .= "</tbody></table></section>";
