@@ -68,10 +68,16 @@ class MUsuarios implements IUsuarios {
     }
 
     public function ValidarLogin($Usuario, $Pass) {
-        $sql = "Select Nombre,ID_Usuario,Usuario,Pass,ID_ROL from tbl_usuario where Usuario ='$Usuario' and Pass ='$Pass'  and Estado = 1";
+        try {
+         $sql = "Select Nombre,ID_Usuario,Usuario,Pass,ID_ROL from tbl_usuario where Usuario ='$Usuario' and Pass ='$Pass'  and Estado = 1";
         $result =$this->conn->query($sql);
         $this->conn->close();
-        return $result;  
+        return $result;        
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+
+  
     }
 
     public function CambiarNombre($ID_Usuario, $NuevoNombre) {

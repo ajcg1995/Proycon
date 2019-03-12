@@ -354,14 +354,27 @@ class MHerramientas implements IHerrramientas {
 	
 	
 	public function GuardarTrasladoT($CodigoT){
-		
-		$conexion = new Conexion();
+            try {
+      $conexion = new Conexion();
         $conn = $conexion->CrearConexion();
+        $sql1 = "SELECT Codigo FROM tbl_trasladotemporal WHERE Codigo = '$CodigoT' ";
+         $result = $conn->query($sql1);
+        if (mysqli_num_rows($result)> 0) {
+          $sqldelte="DELETE FROM tbl_trasladotemporal WHERE Codigo ='$CodigoT'";
+          $conn->query($sqldelte);                     
+        $result = 0; 
+        }
+        else
+         {
         $sql = "INSERT INTO tbl_trasladotemporal (Codigo, idTrasladoT) VALUES ('$CodigoT','1');";
-        $result = $conn->query($sql);
+        $conn->query($sql); 
+        $result = 1;
+         }    
         $conn->close();
-        return $result;
-		
+        return $result;   
+            } catch (Exception $exc) {
+                echo $exc->getTraceAsString();
+            }		
 	}
 	
 	

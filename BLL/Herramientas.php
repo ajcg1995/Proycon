@@ -607,9 +607,7 @@ function listarTotalHerramientas() {
 function GuardarTrasladoT($CodigoT) {
     $bdHerramienta = new MHerramientas();
     $resultado = $bdHerramienta->GuardarTrasladoT($CodigoT);
-    if ($resultado != null) {
-        return 1;
-    }
+    echo $resultado;
 }
 
 function ListarTrasladoMo() {

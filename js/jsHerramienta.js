@@ -923,20 +923,16 @@ function EliminarLista(evento) {
 // JALA LOS VALORES DE LA HERRAMIENTA Y MUESTRA VENTANA DE TRASLADO DE Herramientas
 
 function TransladoHerramienta(evento) {
-
-
     var CodigoT = $(evento).parents("tr").find("td").eq(0).html();
-
     $.ajax({
         data: {"CodigoT": CodigoT},
         type: 'POST',
         url: '../BLL/Herramientas.php?opc=GuardarTrasladoT',
         success: function (resultado) {
-            if (resultado = '1') {
+            if (resultado == 1) {
                 $(evento).parents("tr").find("td").addClass('trasladoT');
             } else {
-
-
+                $(evento).parents("tr").find("td").removeClass('trasladoT');
             }
         }
 
