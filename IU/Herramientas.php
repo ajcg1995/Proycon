@@ -20,6 +20,18 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
         <?php if ($_SESSION['ID_ROL'] == 4 || $_SESSION['ID_ROL'] == 5) { ?>
             <script src="../js/Notificaciones.js" type="text/javascript"></script>
         <?php } ?>
+            <style type="text/css">
+                #tbl_total_herramientas{
+                    table-layout: fixed
+                }
+                #tbl_total_herramientas tbody tr td{
+                    overflow-wrap:  break-word;
+                }
+                #tbl_total_herramientas  thead tr th{
+                     overflow-wrap:  break-word;
+                } 
+            </style>
+
     </head>
     <header id="header">
         <?php
@@ -137,8 +149,8 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
                                         <th>Descripción</th>
                                         <th>Fecha Registro</th>
 					<th>Precio</th>
-                                        <th>Disposicion</th>       
-                                        <th>Ubicacion</th>
+                                        <th>Disposición</th>       
+                                        <th>Ubicación</th>
                                         <th>Estado</th> 
                                     </tr>
                                 </thead>

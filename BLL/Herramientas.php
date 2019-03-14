@@ -155,21 +155,23 @@ function FiltroReparacionCodigo($codigo) {
     if ($result != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            
-            $Fecha = date('d/m/Y',strtotime($fila['Fecha']));
-            
+
+            $Fecha = date('d/m/Y', strtotime($fila['Fecha']));
+
             $concatenar .= "<tr>
-                         <td>" . $fila['ID'] . "</td>
-                        <td>" . $fila['Codigo'] . "</td>
-                        <td>" . $fila['Descripcion'] . "</td>
-                        <td>" . $Fecha . "</td>
-                        <td style='color:red'>" . $fila['Dias'] . "</td>
-                        <td>" . $fila['Boleta'] . "</td>
-						<td style='text-align: center'>
-						<button onclick=FacturaReparacion(this)>
-                        <img src='../resources/imagenes/Editar.png' width='15px' alt=''/>
-                        </button>
-						</tr>";
+                            <td>" . $fila['ID'] . "</td>
+                           <td>" . $fila['Codigo'] . "</td>
+                           <td>" . $fila['Descripcion'] . "</td>
+                           <td>" . $Fecha . "</td>
+                           <td style='color:red'>" . $fila['Dias'] . "</td>
+                            <td>" . $fila['ProveedorReparacion'] . "</td>    
+                           <td>" . $fila['Boleta'] . "</td>
+                           <td style='text-align: center'>
+                           <button onclick=FacturaReparacion(this)>
+                           <img src='../resources/imagenes/Editar.png' width='15px' alt=''/>
+                           </button>
+                           </td>
+			</tr>";
         }
         echo $concatenar;
     }
@@ -184,8 +186,8 @@ function FiltroReparacionTipo($tipo) {
     if ($result != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $Fecha = date('d/m/Y',strtotime($fila['Fecha']));
-            
+            $Fecha = date('d/m/Y', strtotime($fila['Fecha']));
+
             $concatenar .= "<tr>
                          <td>" . $fila['ID'] . "</td>
                         <td>" . $fila['Codigo'] . "</td>
@@ -220,7 +222,7 @@ function FiltroTrasladoTipo($tipo) {
     if ($resultado != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-            $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
             $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Tipo'] . "</td>
@@ -248,7 +250,7 @@ function FiltrosHerramientasU($ubicacion) {
     if ($resultado != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-            $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
             $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Tipo'] . "</td>
@@ -273,17 +275,17 @@ function FiltrosHerramientas0() {
     $result = $bdHerramientas->FiltrosHerramientas0();
     if (mysqli_num_rows($result) > 0) {
         $concatenar = '';
-        
+
         while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-             $Monto ="¢". number_format($fila['Precio'], 2, ",", ".");
-             $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
+            $Monto = "¢" . number_format($fila['Precio'], 2, ",", ".");
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
             if ($fila['numEstado'] == '1') {
                 $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Descripcion'] . "</td>
                         <td>" . $fila['descr'] . "</td>
                         <td>" . $Fecha . "</td>
-			<td style='text-align: left'>" . $Monto. "</td>
+			<td style='text-align: left'>" . $Monto . "</td>
                         <td>" . $fila['Disposicion'] . "</td>
                         <td>" . $fila['Nombre'] . "</td>
                         <td>" . $fila['Estado'] . "</td> 
@@ -293,7 +295,7 @@ function FiltrosHerramientas0() {
                         <td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Descripcion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['descr'] . "</td>
-                        <td class='usuarioBolqueado'>" . $Fecha. "</td>
+                        <td class='usuarioBolqueado'>" . $Fecha . "</td>
 			<td class='usuarioBolqueado' style='text-align: left'>" . $Monto . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Disposicion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Nombre'] . "</td>
@@ -312,16 +314,16 @@ function FiltrosHerramientas1() {
     $result = $bdHerramientas->FiltrosHerramientas1();
     if (mysqli_num_rows($result) > 0) {
         $concatenar = '';
-         while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-             $Monto ="¢". number_format($fila['Precio'], 2, ",", ".");
-             $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $Monto = "¢" . number_format($fila['Precio'], 2, ",", ".");
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
             if ($fila['numEstado'] == '1') {
                 $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Descripcion'] . "</td>
                         <td>" . $fila['descr'] . "</td>
                         <td>" . $Fecha . "</td>
-			<td style='text-align: right'>" . $Monto. "</td>
+			<td style='text-align: right'>" . $Monto . "</td>
                         <td>" . $fila['Disposicion'] . "</td>
                         <td>" . $fila['Nombre'] . "</td>
                         <td>" . $fila['Estado'] . "</td> 
@@ -331,7 +333,7 @@ function FiltrosHerramientas1() {
                         <td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Descripcion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['descr'] . "</td>
-                        <td class='usuarioBolqueado'>" . $Fecha. "</td>
+                        <td class='usuarioBolqueado'>" . $Fecha . "</td>
 			<td class='usuarioBolqueado' style='text-align: right'>" . $Monto . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Disposicion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Nombre'] . "</td>
@@ -350,16 +352,16 @@ function FiltrosHerramientas2() {
     $result = $bdHerramientas->FiltrosHerramientas2();
     if (mysqli_num_rows($result) > 0) {
         $concatenar = '';
-       while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-             $Monto ="¢". number_format($fila['Precio'], 2, ",", ".");
-             $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $Monto = "¢" . number_format($fila['Precio'], 2, ",", ".");
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
             if ($fila['numEstado'] == '1') {
                 $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Descripcion'] . "</td>
                         <td>" . $fila['descr'] . "</td>
                         <td>" . $Fecha . "</td>
-			<td style='text-align: right'>" . $Monto. "</td>
+			<td style='text-align: right'>" . $Monto . "</td>
                         <td>" . $fila['Disposicion'] . "</td>
                         <td>" . $fila['Nombre'] . "</td>
                         <td>" . $fila['Estado'] . "</td> 
@@ -369,7 +371,7 @@ function FiltrosHerramientas2() {
                         <td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Descripcion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['descr'] . "</td>
-                        <td class='usuarioBolqueado'>" . $Fecha. "</td>
+                        <td class='usuarioBolqueado'>" . $Fecha . "</td>
 			<td class='usuarioBolqueado' style='text-align: right'>" . $Monto . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Disposicion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Nombre'] . "</td>
@@ -388,16 +390,16 @@ function FiltrosHerramientas3() {
     $result = $bdHerramientas->FiltrosHerramientas3();
     if (mysqli_num_rows($result) > 0) {
         $concatenar = '';
-         while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-             $Monto ="¢". number_format($fila['Precio'], 2, ",", ".");
-             $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $Monto = "¢" . number_format($fila['Precio'], 2, ",", ".");
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
             if ($fila['numEstado'] == '1') {
                 $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Descripcion'] . "</td>
                         <td>" . $fila['descr'] . "</td>
                         <td>" . $Fecha . "</td>
-			<td style='text-align: right'>" . $Monto. "</td>
+			<td style='text-align: right'>" . $Monto . "</td>
                         <td>" . $fila['Disposicion'] . "</td>
                         <td>" . $fila['Nombre'] . "</td>
                         <td>" . $fila['Estado'] . "</td> 
@@ -407,7 +409,7 @@ function FiltrosHerramientas3() {
                         <td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Descripcion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['descr'] . "</td>
-                        <td class='usuarioBolqueado'>" . $Fecha. "</td>
+                        <td class='usuarioBolqueado'>" . $Fecha . "</td>
 			<td class='usuarioBolqueado' style='text-align: right'>" . $Monto . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Disposicion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Nombre'] . "</td>
@@ -426,16 +428,16 @@ function FiltrosHerramientas4() {
     $result = $bdHerramientas->FiltrosHerramientas4();
     if (mysqli_num_rows($result) > 0) {
         $concatenar = '';
-       while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-             $Monto ="¢". number_format($fila['Precio'], 2, ",", ".");
-             $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $Monto = "¢" . number_format($fila['Precio'], 2, ",", ".");
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
             if ($fila['numEstado'] == '1') {
                 $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Descripcion'] . "</td>
                         <td>" . $fila['descr'] . "</td>
                         <td>" . $Fecha . "</td>
-			<td style='text-align: right'>" . $Monto. "</td>
+			<td style='text-align: right'>" . $Monto . "</td>
                         <td>" . $fila['Disposicion'] . "</td>
                         <td>" . $fila['Nombre'] . "</td>
                         <td>" . $fila['Estado'] . "</td> 
@@ -445,7 +447,7 @@ function FiltrosHerramientas4() {
                         <td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Descripcion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['descr'] . "</td>
-                        <td class='usuarioBolqueado'>" . $Fecha. "</td>
+                        <td class='usuarioBolqueado'>" . $Fecha . "</td>
 			<td class='usuarioBolqueado' style='text-align: right'>" . $Monto . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Disposicion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Nombre'] . "</td>
@@ -500,8 +502,8 @@ function totalReparaciones() {
     if ($resultado != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-            $Fecha = date('d/m/Y',strtotime($fila['Fecha']));
-            
+            $Fecha = date('d/m/Y', strtotime($fila['Fecha']));
+
             $concatenar .= "<tr>
                         <td>" . $fila['ID'] . "</td>
                         <td>" . $fila['Codigo'] . "</td>
@@ -582,16 +584,16 @@ function listarTotalHerramientas() {
     if ($resultado != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-             $Monto ="¢". number_format($fila['Precio'], 2, ",", ".");
-             $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
+            $Monto = "¢" . number_format($fila['Precio'], 2, ",", ".");
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
             if ($fila['numEstado'] == '1') {
-               
+
                 $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td style='text-align: left'>" . $fila['Tipo'] . "</td>
                         <td style='text-align: left'>" . $fila['Descripcion'] . "</td>    
                         <td>" . $Fecha . "</td>
-			<td style='text-align: right'>" .$Monto. "</td>
+			<td style='text-align: right'>" . $Monto . "</td>
                         <td>" . $fila['Disposicion'] . "</td>
                         <td>" . $fila['Nombre'] . "</td>
                         <td>" . $fila['Estado'] . "</td>
@@ -602,7 +604,7 @@ function listarTotalHerramientas() {
                         <td class='usuarioBolqueado' style='text-align: left'>" . $fila['Tipo'] . "</td>
                         <td class='usuarioBolqueado' style='text-align: left'>" . $fila['Descripcion'] . "</td> 
                         <td class='usuarioBolqueado'>" . $Fecha . "</td>
-			<td class='usuarioBolqueado' style='text-align: right'>" . $Monto. "</td>
+			<td class='usuarioBolqueado' style='text-align: right'>" . $Monto . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Disposicion'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Nombre'] . "</td>
                         <td class='usuarioBolqueado'>" . $fila['Estado'] . "</td>
@@ -625,7 +627,7 @@ function ListarTrasladoMo() {
     if ($resultado != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-            $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
             $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Ubicacion'] . "</td>
@@ -650,8 +652,8 @@ function listarTotalHerramientasTranslado() {
     if ($resultado != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-            $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
-            
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
+
             $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Tipo'] . "</td>
@@ -736,24 +738,23 @@ function RegistrarTipoHerramienta() {
 
 // Registra las Herramientas
 
-function RegistrarHerramientas(){
-	$herramienta = new Herramientas();
-	$bdHerramienta = new MHerramientas();
-	$herramienta ->Descripcion =$_POST['Descripcion'];
-        $herramienta ->Codigo =$_POST['Codigo'];
-	$herramienta ->Fecha =$_POST['Fecha'];
-	$herramienta ->Estado ="1";                         
-	$herramienta ->Disposicion ="1";                  
-	$herramienta ->Tipo =$_POST['Tipo'];
-	$herramienta ->Marca =$_POST['Marca'];
-	$herramienta ->Procedencia =$_POST['Procedencia'];
-	$herramienta ->Ubicacion  = "1";    
-        $herramienta ->Precio     = $_POST['Precio'];
-        $herramienta ->NumFactura = $_POST['NumFactura'];
-        
-        
-	echo $bdHerramienta ->RegistrarHerramientas($herramienta);
-	
+function RegistrarHerramientas() {
+    $herramienta = new Herramientas();
+    $bdHerramienta = new MHerramientas();
+    $herramienta->Descripcion = $_POST['Descripcion'];
+    $herramienta->Codigo = $_POST['Codigo'];
+    $herramienta->Fecha = $_POST['Fecha'];
+    $herramienta->Estado = "1";
+    $herramienta->Disposicion = "1";
+    $herramienta->Tipo = $_POST['Tipo'];
+    $herramienta->Marca = $_POST['Marca'];
+    $herramienta->Procedencia = $_POST['Procedencia'];
+    $herramienta->Ubicacion = "1";
+    $herramienta->Precio = $_POST['Precio'];
+    $herramienta->NumFactura = $_POST['NumFactura'];
+
+
+    echo $bdHerramienta->RegistrarHerramientas($herramienta);
 }
 
 function ConsecutivoReparacion() {
@@ -814,13 +815,15 @@ function buscarherramienCodigo($Cod) {
     $fila = mysqli_fetch_array($result, MYSQLI_ASSOC);
     $concatenar = "";
     if (mysqli_num_rows($result) > 0) {
+           $Monto = "¢" . number_format($fila['Precio'], 2, ",", ".");
+           $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
         if ($fila['Estado'] == 'Buena') {
             $concatenar = "<tr>
                     <td>" . $fila['Codigo'] . "</td>
                     <td>" . $fila['Tipo'] . "</td>
                     <td>" . $fila['Descripcion'] . "</td>
-                    <td>" . $fila['FechaIngreso'] . "</td>
-		    <td>" . $fila['Precio'] . "</td>
+                    <td>" . $Fecha . "</td>
+		    <td>" . $Monto. "</td>
                     <td>" . $fila['Disposicion'] . "</td>
                     <td>" . $fila['Nombre'] . "</td>
                     <td>" . $fila['Estado'] . "</td>
@@ -829,8 +832,9 @@ function buscarherramienCodigo($Cod) {
             $concatenar = "<tr>
                     <td class='usuarioBolqueado'>" . $fila['Codigo'] . "</td>
                     <td class='usuarioBolqueado'>" . $fila['Tipo'] . "</td>
-                    <td class='usuarioBolqueado'>" . $fila['FechaIngreso'] . "</td>
-		    <td class='usuarioBolqueado'>" . $fila['Precio'] . "</td>
+                     <td class='usuarioBolqueado'>". $fila['Descripcion'] . "</td>    
+                    <td class='usuarioBolqueado'>" . $Fecha . "</td>
+		    <td class='usuarioBolqueado'>" . $Monto . "</td>
                     <td class='usuarioBolqueado'>" . $fila['Disposicion'] . "</td>
                     <td class='usuarioBolqueado'>" . $fila['Nombre'] . "</td>
                     <td class='usuarioBolqueado'>" . $fila['Estado'] . "</td>
@@ -853,7 +857,7 @@ function reparacionesTotales($codigo) {
         $concatenar = '';
         $total = 0;
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-            $Fecha = date('d/m/Y',strtotime($fila['FechaEntrada']));
+            $Fecha = date('d/m/Y', strtotime($fila['FechaEntrada']));
             $concatenar .= "<tr>
                          <td>" . $Fecha . "</td>
                         <td>" . $fila['ID_FacturaReparacion'] . "</td>
@@ -889,7 +893,7 @@ function trasladosTotales($codigo) {
     if ($resultado != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-            $Fecha = date('d/m/Y',strtotime($fila['Fecha']));
+            $Fecha = date('d/m/Y', strtotime($fila['Fecha']));
             $concatenar .= "<tr>
                         <td>" . $Fecha . "</td>
                         <td>" . $fila['NumBoleta'] . "</td>
@@ -905,23 +909,21 @@ function InfoHerramienta($codigo) {
 
     $bdHerramienta = new MHerramientas();
     $resultado = $bdHerramienta->InfoHerramienta($codigo);
-    
-    
 
-	$bdHerramienta = new MHerramientas();	
-    $resultado = $bdHerramienta-> InfoHerframienta($codigo);
- 
- 
-	if ($resultado != null){
-		$herramienta = '';
-          while ($fila = mysqli_fetch_array($resultado,MYSQLI_ASSOC)){
-            $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
-            $herramienta = $fila['Codigo'].";".$fila['Marca'].";".$fila['Descripcion'].";".$Fecha.";".$fila['Procedencia'] . ";" . $fila['Precio'] .";".$fila['NumFactura'].";"; 	
-         }
-          echo $herramienta;
-		 
-          
-    }	 
+
+
+    $bdHerramienta = new MHerramientas();
+    $resultado = $bdHerramienta->InfoHerframienta($codigo);
+
+
+    if ($resultado != null) {
+        $herramienta = '';
+        while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
+            $herramienta = $fila['Codigo'] . ";" . $fila['Marca'] . ";" . $fila['Descripcion'] . ";" . $Fecha . ";" . $fila['Procedencia'] . ";" . $fila['Precio'] . ";" . $fila['NumFactura'] . ";";
+        }
+        echo $herramienta;
+    }
 }
 
 function buscarTraslado($Cod) {
@@ -931,8 +933,8 @@ function buscarTraslado($Cod) {
     if ($resultado != null) {
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
-            $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
-            
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
+
             $concatenar .= "<tr>
                         <td>" . $fila['Codigo'] . "</td>
                         <td>" . $fila['Tipo'] . "</td>
@@ -953,26 +955,25 @@ function buscarTraslado($Cod) {
     }
 }
 
-
-function BuscarTiempoRealHerramienta($consulta){
+function BuscarTiempoRealHerramienta($consulta) {
     $bdHerramienta = new MHerramientas();
     $result = $bdHerramienta->BuscarTiempoRealHerramienta($consulta);
     //echo $result;
-    if (mysqli_num_rows($result)>0) {
-        $concatenar="";
-        while($fila = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-            
-            $Fecha = date('d/m/Y',strtotime($fila['FechaIngreso']));
-            
-               $concatenar.="<tr>
-                    <td>".$fila['Codigo']."</td>
-                    <td>".$fila['Tipo']."</td>
-                     <td>".$fila['Descripcion']."</td>
-                    <td>".$Fecha."</td>
-		    <td>".$fila['Precio']."</td>
-                    <td>".$fila['Disposicion']."</td>
-                    <td>".$fila['Nombre']."</td>
-                    <td>".$fila['Estado']."</td>
+    if (mysqli_num_rows($result) > 0) {
+        $concatenar = "";
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+
+            $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
+
+            $concatenar .= "<tr>
+                    <td>" . $fila['Codigo'] . "</td>
+                    <td>" . $fila['Tipo'] . "</td>
+                     <td>" . $fila['Descripcion'] . "</td>
+                    <td>" . $Fecha . "</td>
+		    <td>" . $fila['Precio'] . "</td>
+                    <td>" . $fila['Disposicion'] . "</td>
+                    <td>" . $fila['Nombre'] . "</td>
+                    <td>" . $fila['Estado'] . "</td>
                 </tr>";
         }
         echo $concatenar;

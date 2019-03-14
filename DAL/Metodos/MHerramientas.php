@@ -469,7 +469,7 @@ class MHerramientas implements IHerrramientas {
 	 public function FiltroReparacionCodigo($codigo) {
         $conexion = new Conexion();
         $conn = $conexion->CrearConexion();
-        $sql =  "SELECT tr.ID,tr.Codigo,tt.Descripcion,tr.Fecha,(CURDATE()- tr.Fecha) as Dias, tr.Boleta  from tbl_tempoherramientareparacion tr,tbl_tipoherramienta tt, tbl_herramientaelectrica th WHERE tr.Codigo = th.Codigo and th.ID_Tipo = tt.ID_Tipo and th.Codigo = '$codigo';";
+        $sql =  "SELECT tr.ID,tr.Codigo,tt.Descripcion,tr.Fecha,(CURDATE()- tr.Fecha) as Dias, tr.Boleta,re.ProveedorReparacion from tbl_tempoherramientareparacion tr,tbl_tipoherramienta tt, tbl_herramientaelectrica th,tbl_boletareparacion re WHERE tr.Codigo = th.Codigo and th.ID_Tipo = tt.ID_Tipo and tr.Boleta= re.NumBoleta and th.Codigo = '$codigo' ";
         $result = $conn->query($sql);
         $conn->close();
         return $result;

@@ -801,10 +801,10 @@ header #menu nav .ul .submenu li a:hover{
 
 #contenedor .MostrarBusquedaHerramienta{
     padding-top: 3.5%;
-    width: 60%;
+    width: 75%;
     display: none;
   /*  margin: auto;*/
-   margin-left: 10%;
+   
   
 }
 .MostrarBusquedaHerramienta th{

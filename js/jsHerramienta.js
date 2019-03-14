@@ -382,12 +382,6 @@ function GuardarHerramienta() {
         "Precio": $('#txtPrecioH').val(),
         "NumFactura" : $('#txtNumFacturaH').val()
     };
-
-console.log($('#txtNumFacturaH').val());
-
-alert($('#txtNumFacturaH').val());
-
-
     // Valida el campo de la Descripcion
 
     if (consecutivoHerramienta == "") {
@@ -1569,6 +1563,64 @@ $(document).on('keyup', '#txtCodigo', function () {
     if (valor != "") {
         BuscarTiempoRealHerramienta(valor);
     }
+});
+
+//Enter
+$(document).ready(function(){
+    $("#txtCodigoHerra").keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code==13){
+           BuscarHerramientasPorCodigo();
+            e.preventDefault();  
+        }
+    });
+    
+    $("#txtCodigoVista").keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code==13){
+           MostrarHistorial();
+            e.preventDefault();  
+        }
+    });
+     $("#CodHerramientaReparacion").keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code==13){
+           BuscarHerramientaTablaReparaciones();
+            e.preventDefault();  
+        }
+    });   
+      $("#txtCodigoHerramientaBuscar").keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code==13){
+           BuscarHerramientaNombre();
+            e.preventDefault();  
+        }
+    }); 
+     $("#txtnombreTipoHerramienta").keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code==13){
+          GuardarTipoHerramienta();
+            e.preventDefault();  
+        }
+    });
+    
+        $("#txtNumFacturaH").keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code==13){
+         GuardarHerramienta();
+            e.preventDefault();  
+        }
+    }); 
+     
+$("#txtTrasladoCodigo").keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code==13){
+         BuscarTHerramienta();
+            e.preventDefault();  
+        }
+    });    
+    
+    
 });
 
 
