@@ -16,6 +16,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
         <script src="../js/jsHerramienta.js" type="text/javascript"></script>
         <script src="../js/jquery.table2excel.js" type="text/javascript"></script>
         <script src="../js/jsMenu.js" type="text/javascript"></script>
+         <script src="../js/jspdf.debug.js" type="text/javascript"></script>
         <script src="../css/bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js" type="text/javascript"></script>
         <?php if ($_SESSION['ID_ROL'] == 4 || $_SESSION['ID_ROL'] == 5) { ?>
             <script src="../js/Notificaciones.js" type="text/javascript"></script>
@@ -840,11 +841,11 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
                                 <div id="headerBoletaPedido">
                                     <div class="col-xs-6 text-right">
-                                        <h2><small style="color: red">Boleta Nº <span id="consecutivoBoletaSeleccionado"></span></small></h2>
+                                        <h2><small style="color: red">Boleta Nº <span id="consecutivoBoletaReparacionSeleccionado"></span></small></h2>
                                     </div>
 
                                     <div class="col-xs-6 text-right tableFechaPedido">
-                                        <table class="talaFecha" id="tblFecha">
+                                        <table class="talaFecha" id="tblFechaBoletaReparacion">
                                             <thead>
                                                 <tr>
                                                     <th>Dia</th>
@@ -863,15 +864,15 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
                                     </div>
 
-                                    <h4>Boleta: <strong id="TipoPedido">Reparación Herramienta</strong></h4>
-                                    <h4>Generada Por: <strong id="generadaPor"></strong></h4>
+                                    <h4>Boleta: <strong id="TipoPedidoBoletaReparacion">Reparación Herramienta</strong></h4>
+                                    <h4>Generada Por: <strong id="generadaPorBoletaReparacion"></strong></h4>
                                     <BR>
                                 </div>
                             </header>
 
                             <div class="bodyPedido" >
-                                <div class="tableCuerpoPedido" id="ContenidoBoleta_Selecionado">
-                                    <table class="tablasG" id="tblFecha">
+                                <div class="tableCuerpoPedido" id="ContenidoBoletaReparacion_Selecionado">
+                                    <table class="tablasG" id="tblBoletaReparacion">
                                         <thead>
                                             <tr>
                                                 <th>Código</th>
@@ -889,7 +890,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
 
                             <div class="modal-footer">
-                                <button  type="button" class="btn btn-default btn-estilos" onclick="Exportar_Pdf()">
+                                <button  type="button" class="btn btn-default btn-estilos" onclick="Exportar_Pdf('ContenidoBoletaReparacion_Selecionado','tblFechaBoletaReparacion','consecutivoBoletaReparacionSeleccionado','','TipoPedidoBoletaReparacion','generadaPorBoletaReparacion')">
                                     <img  src="../resources/imagenes/print.png" alt="" width="30px"/>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-estilos" onclick="AnularBoletaMaterial()">Eliminar</button>
