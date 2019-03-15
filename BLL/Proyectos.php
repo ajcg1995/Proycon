@@ -358,13 +358,13 @@ if ($result != null) {
 $concaternar = "";
 
 while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    $Fecha = date('d/m/Y',strtotime($fila['Fecha']));
+
 $concaternar .= "<div class='lospedido'>
                         <table>
                             <tbody>
                             <td hidden='true'>" . $fila['TipoPedido'] . "</td>
                             <td>" . $fila['Consecutivo'] . "</td>
-                            <td>" . $Fecha . "</td>
+                            <td>" . $fila['Fecha'] . "</td>
                             <td>" . $fila['Nombre'] . "</td>    
                             <td><a onclick='VerPedido(this)' href='#'>Ver</a></td>
                             </tbody>
