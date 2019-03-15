@@ -409,3 +409,16 @@ function BuscarMaterialCodigo(){
     }
 }
 
+$(document).ready(function(){
+    $("#txtCodigoMaterial").keypress(function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code==13){
+          BuscarMaterialCodigo();
+            e.preventDefault();  
+        }
+    });
+       
+    
+    
+});
+
