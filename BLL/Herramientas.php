@@ -911,11 +911,6 @@ function InfoHerramienta($codigo) {
     $resultado = $bdHerramienta->InfoHerramienta($codigo);
 
 
-
-    $bdHerramienta = new MHerramientas();
-    $resultado = $bdHerramienta->InfoHerframienta($codigo);
-
-
     if ($resultado != null) {
         $herramienta = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
