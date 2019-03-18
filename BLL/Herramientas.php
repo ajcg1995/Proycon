@@ -857,20 +857,22 @@ function reparacionesTotales($codigo) {
         $concatenar = '';
         $total = 0;
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+            $Monto = "¢" . number_format($fila['MontoReparacion'], 2, ",", ".");
             $Fecha = date('d/m/Y', strtotime($fila['FechaEntrada']));
             $concatenar .= "<tr>
                          <td>" . $Fecha . "</td>
                         <td>" . $fila['ID_FacturaReparacion'] . "</td>
                         <td>" . $fila['Descripcion'] . "</td>
-                        <td>" . "₡". $fila['MontoReparacion'] . "</td>         
+                        <td>" . $Monto . "</td>         
 						</tr>";
             $total = $total + $fila['MontoReparacion'];
         }
+        $MontoTotal = "¢" . number_format($total, 2, ",", ".");
         $concatenar .= "<tr>
                          <td></td>
                         <td></td>
                         <td><strong>TOTAL</strong></td>
-                        <td><strong>₡$total</strong></td>";
+                        <td><strong>$MontoTotal</strong></td>";
         echo $concatenar;
     }
 }
