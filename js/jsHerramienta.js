@@ -716,7 +716,7 @@ function MostrarHistorial()
     }
 
     // ME LLENA LOS CAMPOS DEL TOTAL DE REPARACIONES DE LA HERRAMIENTA
-   /* $.ajax({
+    $.ajax({
         type: "POST",
         url: "../BLL/Herramientas.php?opc=reparacionesTotales&codigo=" + codigo,
         success: function (respuesta) {
@@ -738,7 +738,7 @@ function MostrarHistorial()
             }
         }
     })
-*/
+
     // ME LLENA LOS CAMPOS DEL HISTORIAL DE LA Herramienta
 
     $.ajax({
@@ -1200,7 +1200,7 @@ function Remover(evento) {
 }
 
 
-//GUARDARRRRRRRRRRRRRR BOLESTASSSSSSSSSSSSSSSSSSSSS 
+//GUARDARRRRRRRRRRRRRR BOLESTAS
 
 
 function GuardarBoletaReparaciones() {

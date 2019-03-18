@@ -862,7 +862,7 @@ function reparacionesTotales($codigo) {
                          <td>" . $Fecha . "</td>
                         <td>" . $fila['ID_FacturaReparacion'] . "</td>
                         <td>" . $fila['Descripcion'] . "</td>
-                        <td>" . $fila['MontoReparacion'] . "</td>         
+                        <td>" . "₡". $fila['MontoReparacion'] . "</td>         
 						</tr>";
             $total = $total + $fila['MontoReparacion'];
         }
@@ -890,16 +890,42 @@ function trasladosTotales($codigo) {
     $bdHerramienta = new MHerramientas();
     $resultado = $bdHerramienta->trasladosTotales($codigo);
 
-    if ($resultado != null) {
+    if ($resultado != null) {         
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
             $Fecha = date('d/m/Y', strtotime($fila['Fecha']));
-            $concatenar .= "<tr>
+            
+            if($fila['Destino'] == ""){
+                
+                // Cuando el destino o la ubicacion es nulo es porque viene de bodega
+                
+                $concatenar .= "<tr>
+                        <td>" . $Fecha . "</td>
+                        <td>" . $fila['NumBoleta'] . "</td>
+                        <td>" . $fila['Ubicacion'] . "</td>
+                        <td>" . "Bodega" . "</td>       
+						</tr>";
+            }else{
+                
+                if($fila['Ubicacion'] == ""){
+                    $concatenar .= "<tr>
+                        <td>" . $Fecha . "</td>
+                        <td>" . $fila['NumBoleta'] . "</td>
+                        <td>" . "Bodega"  . "</td>
+                        <td>" . $fila['Destino'] . "</td>       
+						</tr>";                      
+                }else{
+                    $concatenar .= "<tr>
                         <td>" . $Fecha . "</td>
                         <td>" . $fila['NumBoleta'] . "</td>
                         <td>" . $fila['Ubicacion'] . "</td>
                         <td>" . $fila['Destino'] . "</td>       
-						</tr>";
+						</tr>";   
+                }
+                
+                           
+            }
+            
         }
         echo $concatenar;
     }
