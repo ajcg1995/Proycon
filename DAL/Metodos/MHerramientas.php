@@ -460,7 +460,7 @@ class MHerramientas implements IHerrramientas {
         $conexion = new Conexion();
         $conn = $conexion->CrearConexion();
 		
-        $sql =  "SELECT tr.ID,tr.Codigo,tt.Descripcion,tr.Fecha,(CURDATE()- tr.Fecha) as Dias, tr.Boleta  from tbl_tempoherramientareparacion tr,tbl_tipoherramienta tt, tbl_herramientaelectrica th WHERE tr.Codigo = th.Codigo and th.ID_Tipo = tt.ID_Tipo and tt.ID_Tipo = $tipo;";
+        $sql =  "SELECT tr.ID,tr.Codigo,tt.Descripcion,tr.Fecha,DATEDIFF(CURDATE(),tr.Fecha) as Dias,r.ProveedorReparacion ,tr.Boleta from tbl_tempoherramientareparacion tr,tbl_tipoherramienta tt, tbl_herramientaelectrica th, tbl_boletareparacion r WHERE tr.Codigo = th.Codigo and th.ID_Tipo = tt.ID_Tipo and tr.Boleta=r.NumBoleta and tt.ID_Tipo = $tipo;";
         $result = $conn->query($sql);
         $conn->close();
         return $result;

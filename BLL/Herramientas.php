@@ -194,6 +194,7 @@ function FiltroReparacionTipo($tipo) {
                         <td>" . $fila['Descripcion'] . "</td>
                         <td>" . $Fecha . "</td>
                         <td style='color:red'>" . $fila['Dias'] . "</td>
+                        <td>" . $fila['ProveedorReparacion'] . "</td>  
                         <td>" . $fila['Boleta'] . "</td>
 						<td style='text-align: center'>
 						<button onclick=FacturaReparacion(this)>
