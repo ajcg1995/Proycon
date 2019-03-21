@@ -19,7 +19,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
          <script src="../js/jspdf.debug.js" type="text/javascript"></script>
         <script src="../css/bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js" type="text/javascript"></script>
         <?php if ($_SESSION['ID_ROL'] == 4 || $_SESSION['ID_ROL'] == 5) { ?>
-            <script src="../js/Notificaciones.js" type="text/javascript"></script>
+            <!-- <script src="../js/Notificaciones.js" type="text/javascript"></script>  -->
         <?php } ?>
             <style type="text/css">
                 #tbl_total_herramientas{

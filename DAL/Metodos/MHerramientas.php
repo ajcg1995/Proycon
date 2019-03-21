@@ -17,6 +17,25 @@ class MHerramientas implements IHerrramientas {
 		WHERE Codigo = '$Facturacion->Codigo'";
 
         $sql3 = "Delete from tbl_tempoherramientareparacion where Codigo = '$Facturacion->Codigo'";
+        
+        
+        // Insetar el transtalo de Bodega al proyecto 
+        
+        $sql4 = "select Ubicacion from tbl_herramientaelectrica where Codigo = '$Facturacion->Codigo'";
+        $ubi = $conn->query($sql4);
+        
+        if ($ubi <> null) {
+            while ($fila = mysqli_fetch_array($ubi, MYSQLI_ASSOC)) {
+                $ubicacion = $fila['Ubicacion'];
+            }
+        }
+        
+        //Insertar en el historial
+        if($sql4 <> null){
+            $sql5 = "Insert into tbl_historialherramientas (Codigo,Ubicacion,Destino,NumBoleta,Fecha) values ('" . $Facturacion->Codigo . "','" . "1000" . "','" . $ubicacion . "','" . $Facturacion->NumBoleta . "'," ."'$Facturacion->FechaEntrada');";
+            $conn->query($sql5);
+        }
+                
         $conn->query($sql2);
         $conn->query($sql3);
 		
@@ -270,7 +289,8 @@ class MHerramientas implements IHerrramientas {
     public function RegistrarReparacion($consecutivo, $fecha, $ID_Usuario,$provedorReparacion) {
         $conexion = new Conexion();
         $conn = $conexion->CrearConexion();
-        $sql = "Insert into tbl_boletareparacion(Numboleta,Fecha,ID_Usuario,ProveedorReparacion) values ($consecutivo,'" . $fecha . "','" . $ID_Usuario . "','$provedorReparacion');";
+        $sql =  "Insert into tbl_boletareparacion(Numboleta,Fecha,ID_Usuario,ProveedorReparacion) values ($consecutivo,'" . $fecha . "','" . $ID_Usuario . "','$provedorReparacion');";
+        
         $result = $conn->query($sql);
         $conn->close();
         return $result;
@@ -282,6 +302,26 @@ class MHerramientas implements IHerrramientas {
         $sql = "Insert into tbl_reparacionherramienta (Codigo,FechaSalida,NumBoleta) values ('" . $codigoHerramienta . "','" . $fecha . "',$consecutivo);";
         $sql3 = "Insert into tbl_tempoherramientareparacion(Codigo,Fecha,Boleta) values('$codigoHerramienta','$fecha',$consecutivo)";
         $sql2 = "UPDATE tbl_herramientaelectrica SET Disposicion = 0, Estado = 0 WHERE Codigo='$codigoHerramienta'";
+        
+        
+        // validar para insertar en el historial
+        
+        $sql4 = "select Ubicacion from tbl_herramientaelectrica where Codigo = '$codigoHerramienta'";
+        $ubi = $conn->query($sql4);
+        
+        if ($ubi <> null) {
+            while ($fila = mysqli_fetch_array($ubi, MYSQLI_ASSOC)) {
+                $ubicacion = $fila['Ubicacion'];
+            }
+        }
+        
+        //Insertar en el historial
+        if($sql4 <> null){
+            $sql5 = "Insert into tbl_historialherramientas (Codigo,Ubicacion,Destino,NumBoleta,Fecha) values ('" . $codigoHerramienta . "','" . $ubicacion . "','" . "1000" . "','" . $consecutivo . "'," ."'$fecha');";
+            $conn->query($sql5);
+        }
+        
+        
         $result = $conn->query($sql);
         $conn->query($sql2);
         $conn->query($sql3);

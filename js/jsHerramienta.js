@@ -700,7 +700,7 @@ function LimpiarBusquedaHerramienta() {
 /////// CARGA EL TOTAL DE REPARACIONES Y HISTORIAL DE TRASLADO DE LAS HERRAMIENTAS
 
 function MostrarHistorial()
-{
+{    
     var codigo = $("#txtCodigoVista").val();
     $("#codigo").val(codigo);
     $("#reparaciones").hide();
@@ -714,8 +714,6 @@ function MostrarHistorial()
     if ($(".MostrarBusquedaHerramienta").is(":visible")) {
         $(".MostrarBusquedaHerramienta").hide();
     }
-
-
 
     // ME LLENA LOS CAMPOS DEL TOTAL DE REPARACIONES DE LA HERRAMIENTA
     $.ajax({
@@ -747,6 +745,7 @@ function MostrarHistorial()
         type: "POST",
         url: "../BLL/Herramientas.php?opc=InfoHerramienta&codigo=" + codigo,
         success: function (respuesta) {
+            console.log(respuesta);
             var informacion = respuesta;
             var Cadena = informacion.split(";");
             var Codigo = Cadena[0];
@@ -1201,7 +1200,7 @@ function Remover(evento) {
 }
 
 
-//GUARDARRRRRRRRRRRRRR BOLESTASSSSSSSSSSSSSSSSSSSSS 
+//GUARDARRRRRRRRRRRRRR BOLESTAS
 
 
 function GuardarBoletaReparaciones() {

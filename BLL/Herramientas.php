@@ -858,20 +858,22 @@ function reparacionesTotales($codigo) {
         $concatenar = '';
         $total = 0;
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
+            $Monto = "¢" . number_format($fila['MontoReparacion'], 2, ",", ".");
             $Fecha = date('d/m/Y', strtotime($fila['FechaEntrada']));
             $concatenar .= "<tr>
                          <td>" . $Fecha . "</td>
                         <td>" . $fila['ID_FacturaReparacion'] . "</td>
                         <td>" . $fila['Descripcion'] . "</td>
-                        <td>" . $fila['MontoReparacion'] . "</td>         
+                        <td>" . $Monto . "</td>         
 						</tr>";
             $total = $total + $fila['MontoReparacion'];
         }
+        $MontoTotal = "¢" . number_format($total, 2, ",", ".");
         $concatenar .= "<tr>
                          <td></td>
                         <td></td>
                         <td><strong>TOTAL</strong></td>
-                        <td><strong>₡$total</strong></td>";
+                        <td><strong>$MontoTotal</strong></td>";
         echo $concatenar;
     }
 }
@@ -891,16 +893,42 @@ function trasladosTotales($codigo) {
     $bdHerramienta = new MHerramientas();
     $resultado = $bdHerramienta->trasladosTotales($codigo);
 
-    if ($resultado != null) {
+    if ($resultado != null) {         
         $concatenar = '';
         while ($fila = mysqli_fetch_array($resultado, MYSQLI_ASSOC)) {
             $Fecha = date('d/m/Y', strtotime($fila['Fecha']));
-            $concatenar .= "<tr>
+            
+            if($fila['Destino'] == ""){
+                
+                // Cuando el destino o la ubicacion es nulo es porque viene de bodega
+                
+                $concatenar .= "<tr>
+                        <td>" . $Fecha . "</td>
+                        <td>" . $fila['NumBoleta'] . "</td>
+                        <td>" . $fila['Ubicacion'] . "</td>
+                        <td>" . "Bodega" . "</td>       
+						</tr>";
+            }else{
+                
+                if($fila['Ubicacion'] == ""){
+                    $concatenar .= "<tr>
+                        <td>" . $Fecha . "</td>
+                        <td>" . $fila['NumBoleta'] . "</td>
+                        <td>" . "Bodega"  . "</td>
+                        <td>" . $fila['Destino'] . "</td>       
+						</tr>";                      
+                }else{
+                    $concatenar .= "<tr>
                         <td>" . $Fecha . "</td>
                         <td>" . $fila['NumBoleta'] . "</td>
                         <td>" . $fila['Ubicacion'] . "</td>
                         <td>" . $fila['Destino'] . "</td>       
-						</tr>";
+						</tr>";   
+                }
+                
+                           
+            }
+            
         }
         echo $concatenar;
     }
@@ -910,11 +938,6 @@ function InfoHerramienta($codigo) {
 
     $bdHerramienta = new MHerramientas();
     $resultado = $bdHerramienta->InfoHerramienta($codigo);
-
-
-
-    $bdHerramienta = new MHerramientas();
-    $resultado = $bdHerramienta->InfoHerframienta($codigo);
 
 
     if ($resultado != null) {

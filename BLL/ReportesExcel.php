@@ -1253,15 +1253,17 @@ function ExportarHistoriaHerramienta(){
              ->setCellValue('C8', 'FECHA ADQUIRIDA')
              ->setCellValue('C9', 'PROCEDENCIA')
             ->setCellValue('C10', 'VARLOR DE COMPRA')
-             ->setCellValue('C12', 'REPARACIONES')
-            ->setCellValue('C13', 'FECHA')
-             ->setCellValue('D13', 'NUMERO FACTURA')
-             ->setCellValue('E13', 'DESCRIPCION')
-             ->setCellValue('F13', 'COSTO');
+            ->setCellValue('C11', 'NUM FACTURA')
+            
+             ->setCellValue('C14', 'REPARACIONES')
+            ->setCellValue('C15', 'FECHA')
+             ->setCellValue('D15', 'NUMERO FACTURA')
+             ->setCellValue('E15', 'DESCRIPCION')
+             ->setCellValue('F15', 'COSTO');
 //codigo,nombre,cantidad
 
 
-    $i = 14;
+    $i = 16;
     $result = $bdHerramientas->InfoHerramienta($_POST['codigo']);
     $fila = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $objPHPExcel->setActiveSheetIndex(0)
@@ -1269,7 +1271,9 @@ function ExportarHistoriaHerramienta(){
             ->setCellValue('D6', $fila['Marca'])
             ->setCellValue('D7', $fila['Descripcion'])
             ->setCellValue('D8', $fila['FechaIngreso'])
-            ->setCellValue('D9', $fila['Procedencia']);
+            ->setCellValue('D9', $fila['Procedencia'])
+            ->setCellValue('D10', $fila['Precio'])
+            ->setCellValue('D11', $fila['NumFactura']);
         
         
     $monto=0;
@@ -1288,13 +1292,13 @@ function ExportarHistoriaHerramienta(){
                 ->setCellValue("E$x", 'Total')
                 ->setCellValue("F$x", $monto);
      
-    $rango = "C14:F$i";
+    $rango = "C15:F$i";
      $i = $i+2;
      $y=$i;
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:H4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-     $objPHPExcel->getActiveSheet()->getStyle('C5:D10')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri')));
+     $objPHPExcel->getActiveSheet()->getStyle('C5:D11')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri')));
     $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
         'type' => PHPExcel_Style_Fill::FILL_SOLID,
         'startcolor' => array('rgb' => 'ffffff')));
@@ -1302,7 +1306,7 @@ function ExportarHistoriaHerramienta(){
     //$rango="C2:F3";
     // $styleArray = array('font' => array( 'name' => 'Calibri','size' => 18)); 
     // $objPHPExcel->getActiveSheet()->getStyle($rango)->applyFromArray($styleArray);
-    $objPHPExcel->getActiveSheet()->getStyle('C13:F13')->applyFromArray(
+    $objPHPExcel->getActiveSheet()->getStyle('C15:F15')->applyFromArray(
             array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 14, 'color' => array('rgb' => 'ffffff')),
                 'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER),
                 'borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('argb' => 'FFF'))))
@@ -1311,7 +1315,7 @@ function ExportarHistoriaHerramienta(){
     $objPHPExcel->getActiveSheet()->getStyle($rango)->applyFromArray(array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER),
         'borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('argb' => 'FFF')))));
 
-    $objPHPExcel->getActiveSheet()->getStyle('C13:F13')->getFill()->applyFromArray(array(
+    $objPHPExcel->getActiveSheet()->getStyle('C15:F15')->getFill()->applyFromArray(array(
         'type' => PHPExcel_Style_Fill::FILL_SOLID,
         'startcolor' => array('rgb' => '003DA6')));
     
