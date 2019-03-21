@@ -82,4 +82,7 @@ interface IHerrramientas {
 
     public function ObternerCosecutivoPedido();
     public function ActualizarHerramienta(Herramientas $herramienta);
+
+    public function FiltrarTipoTotalHerramienta();
+    
 }

@@ -63,7 +63,9 @@ if (isset($_GET ['opc'])) {
         FiltrosHerramientas3();
     } elseif ($_GET['opc'] == "FiltrosHerramientas4") {
         FiltrosHerramientas4();
-    } elseif ($_GET['opc'] == "FiltroTipoHerramientasT") {    // FILTRO DE TRASLADO POR TIPO
+    }elseif ($_GET['opc']=="FiltrosHerramientas5") {
+        FiltrarTipoTotalHerramienta5();
+    }elseif ($_GET['opc'] == "FiltroTipoHerramientasT") {    // FILTRO DE TRASLADO POR TIPO
         FiltroTrasladoTipo($_POST['tipo']);
     } elseif ($_GET['opc'] == "listaEnviadas") {    // FILTRO DE TRASLADO POR TIPO
         listaEnviadas($_POST['codigo']);
@@ -462,6 +464,23 @@ function FiltrosHerramientas4() {
     }
 }
 
+function FiltrarTipoTotalHerramienta5()
+{
+    $bdHerramientas = new MHerramientas();
+    $result = $bdHerramientas->FiltrarTipoTotalHerramienta();
+    if (mysqli_num_rows($result) > 0) 
+        {
+            $concatenar = '';
+          while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) 
+          {
+             $concatenar .= "<tr>
+                          <td>" . $fila['Descripcion'] . "</td>
+                          <td>" . $fila['Cantidad'] . "</td>".
+                           "</tr>";  
+          }
+          echo $concatenar;
+       } 
+}
 // GUARDA EL TRANSLADO DE LA HERRAMIENTA A OTRO PROYECTO
 
 

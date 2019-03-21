@@ -606,4 +606,13 @@ class MHerramientas implements IHerrramientas {
         return $resultado;    
     }
 
+    public function FiltrarTipoTotalHerramienta() {
+        $conexion = new Conexion();
+        $conn = $conexion->CrearConexion();
+        $sql = "SELECT tt.Descripcion,COUNT(*) as Cantidad from tbl_herramientaelectrica th, tbl_tipoherramienta tt where th.ID_Tipo = tt.ID_Tipo GROUP by th.ID_Tipo order by tt.Descripcion ASC";
+        $resultado = $conn->query($sql);
+        $conn->close();
+        return $resultado;    
+    }
+
 }

@@ -8,6 +8,7 @@ function FiltrosHerramientas() {
                 url: '../BLL/Herramientas.php?opc=FiltrosHerramientas0',
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
+                    $('#tbl_total_herramientas').css("display","block"); 
                 }
             });
             break;
@@ -17,6 +18,7 @@ function FiltrosHerramientas() {
                 url: '../BLL/Herramientas.php?opc=FiltrosHerramientas1',
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
+                    $('#tbl_total_herramientas').css("display","block"); 
                 }
             });
             break;
@@ -26,6 +28,7 @@ function FiltrosHerramientas() {
                 url: '../BLL/Herramientas.php?opc=FiltrosHerramientas2',
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
+                    $('#tbl_total_herramientas').css("display","block"); 
                 }
             });
             break;
@@ -35,6 +38,7 @@ function FiltrosHerramientas() {
                 url: '../BLL/Herramientas.php?opc=FiltrosHerramientas3',
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
+                    $('#tbl_total_herramientas').css("display","block"); 
                 }
             });
             break;
@@ -44,6 +48,18 @@ function FiltrosHerramientas() {
                 url: '../BLL/Herramientas.php?opc=FiltrosHerramientas4',
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
+                    $('#tbl_total_herramientas').css("display","block"); 
+                }
+            });
+            break;
+        case "5":
+            $.ajax({
+                type: 'POST',
+                url: '../BLL/Herramientas.php?opc=FiltrosHerramientas5',
+                success: function (result) {
+                    $('#tbl_total_herramientas').css("display","none"); 
+                    $('#tbl_total__tipo_herramientas').css("display","block"); 
+                    $('#listadoTotalTipoHerramientas').html(result);
                 }
             });
             break;
@@ -334,6 +350,7 @@ function listarTotalHerramientas() {
                 alert("error");
             } else {
                 $('#listadoHerramientas').html(respuesta);
+                $('#tbl_total_herramientas').css("display","block"); 
 
             }
         }
@@ -1494,6 +1511,7 @@ function BuscarHerramientasPorCodigo() {
         url: "../BLL/Herramientas.php?opc=buscarherramienCodigo&codigo=" + codigo,
         success: function (respuesta) {
             $("#listadoHerramientas").html(respuesta);
+            $('#tbl_total_herramientas').css("display","block"); 
         }
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -1537,6 +1555,7 @@ function  BuscarTiempoRealHerramienta(consulta) {
         success: function (respuesta) {
             $(".MostrarBusquedaHerramienta").show();
             $("#listadoHerramientas").html(respuesta);
+            $('#tbl_total_herramientas').css("display","block"); 
         }
     }).fail(function (jqXHR, textStatus, errorThrown) {
         if (jqXHR.status === 0) {

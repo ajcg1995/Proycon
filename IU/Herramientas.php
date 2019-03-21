@@ -1,11 +1,15 @@
 <?php
-session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html");die(); }
+session_start();
+if (!isset($_SESSION['Nombre'])) {
+    header("Location: ../index.html");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <title>Herramientas</title>
         <link rel="stylesheet" type="text/css" href="../css/estilos.css"/>
         <link href="../css/responsivecss.css" rel="stylesheet" type="text/css"/>
@@ -16,22 +20,22 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
         <script src="../js/jsHerramienta.js" type="text/javascript"></script>
         <script src="../js/jquery.table2excel.js" type="text/javascript"></script>
         <script src="../js/jsMenu.js" type="text/javascript"></script>
-         <script src="../js/jspdf.debug.js" type="text/javascript"></script>
+        <script src="../js/jspdf.debug.js" type="text/javascript"></script>
         <script src="../css/bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js" type="text/javascript"></script>
-        <?php if ($_SESSION['ID_ROL'] == 4 || $_SESSION['ID_ROL'] == 5) { ?>
-            <!-- <script src="../js/Notificaciones.js" type="text/javascript"></script>  -->
-        <?php } ?>
-            <style type="text/css">
-                #tbl_total_herramientas{
-                    table-layout: fixed
-                }
-                #tbl_total_herramientas tbody tr td{
-                    overflow-wrap:  break-word;
-                }
-                #tbl_total_herramientas  thead tr th{
-                     overflow-wrap:  break-word;
-                } 
-            </style>
+<?php if ($_SESSION['ID_ROL'] == 4 || $_SESSION['ID_ROL'] == 5) { ?>
+                <!-- <script src="../js/Notificaciones.js" type="text/javascript"></script>  -->
+<?php } ?>
+        <style type="text/css">
+            #tbl_total_herramientas{
+                table-layout: fixed
+            }
+            #tbl_total_herramientas tbody tr td{
+                overflow-wrap:  break-word;
+            }
+            #tbl_total_herramientas  thead tr th{
+                overflow-wrap:  break-word;
+            } 
+        </style>
 
     </head>
     <header id="header">
@@ -46,7 +50,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
         <div class="panel panel-info">
             <div class="panel-heading"><h3>Herramientas</h3>
                 <?php
-                if ($_SESSION['ID_ROL'] == 4 || $_SESSION['ID_ROL']==5) {
+                if ($_SESSION['ID_ROL'] == 4 || $_SESSION['ID_ROL'] == 5) {
                     echo "<img src='../resources/imagenes/opciones.png' id='imgOpciones' onclick='mostrarOpciones()' width='30px'/>";
                 }
                 ?>
@@ -55,115 +59,127 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
                 </button>
             </div>
             <div class="panel-body" id="bodypanelHerramientas">
-       <form action="../BLL/ReportesExcel.php" method="POST">
-                
-                <div id="buscarHerrmientas" class="form-group codigoHerramienta">
-                    <div class="buscarHerramienta">
-                        <div class="input-group">
-                            <input id="txtCodigo" name="txtNombreTipoH" type="text" class="form-control" onclick="LimpiarTodo()" placeholder="Ingrese el Tipo de Herramienta que desea encontrar">
-                            <span class="input-group-btn">
-                                <button id="btnBuscar" class="btn btn-default" type="button" onclick="BuscarHerramientas()"><img src="../resources/imagenes/icono_buscar.png" width="18px" alt=""/></button>
-                            </span>
-                        </div>		
-                    </div>
-                </div>
+                <form action="../BLL/ReportesExcel.php" method="POST">
 
-
-
-
-
-                <div class="formularioMenuHerramientas">
-                    <?php if ($_SESSION['ID_ROL'] == 4 ||$_SESSION['ID_ROL']==5) { ?>
-                        <section class="btnsHerramientas">   
-                            <center>
-                                <ul class="listaMenu">
-                                    <li><h4><a data-toggle="modal" data-target="#ModalAgregarHerramienta" href="Javascript:void(0)">+ Agregar Herramienta</a></h4></li>
-                                    <li><h4><a data-toggle='modal' data-target='#ModalAgregarTipoHerramienta' onclick = "listarTipoHerramientas()" href="Javascript:void(0)">+ Agregar Tipo Herramienta</a></h4></li>
-                                    <li><h4><a onclick="listarTotalHerramientas()" href="Javascript:void(0)">Listar Total Herramientas</a></h4></li>
-                                    <li><h4><a onclick="MostrarListaReparaciones()" href="Javascript:void(0)">Historial y Reparaciones</a></h4></li>
-                                    <li><h4><a onclick="MostrarTransladoHerramienta()" href="Javascript:void(0)">Traslado Herramientas</a></h4></li>
-                                </ul>
-                            </center>
-                        </section>  
-                    <?php } ?>
-                </div>
-
-           <input type="hidden" name="txtTotalHerramienta" value="" />
-
-                <!--Lista TOTAL HERRAMIENTAS-->
-
-                <div class="MostrarBusquedaHerramienta">
-                    <div class="panel panel-info" style=" width: auto">
-
-                        <div class="panel-heading" id="headerpnlTotalHerra"><h4 id="tituloHeaderListadoH">Listado Total De Herramientas</h4>
-                            <button id="btnImprimirHerramientas1" type="submit"  class="btn btn-default"><img src="../resources/imagenes/Excel.png" alt="" width="20"/> </button>
+                    <div id="buscarHerrmientas" class="form-group codigoHerramienta">
+                        <div class="buscarHerramienta">
+                            <div class="input-group">
+                                <input id="txtCodigo" name="txtNombreTipoH" type="text" class="form-control" onclick="LimpiarTodo()" placeholder="Ingrese el Tipo de Herramienta que desea encontrar">
+                                <span class="input-group-btn">
+                                    <button id="btnBuscar" class="btn btn-default" type="button" onclick="BuscarHerramientas()"><img src="../resources/imagenes/icono_buscar.png" width="18px" alt=""/></button>
+                                </span>
+                            </div>		
                         </div>
-                        <div class="panel-body">
-                            <div id="bodyBusquedaHerramientas">
-                            <div id="buscarCodigo" style="float: left;width: 50%;" class="form-group "><p>Ordenar Herramientas</p> 
-                            </div>
+                    </div>
 
-                            <div class="opcionesHerramientas">
-                           
+
+
+
+
+                    <div class="formularioMenuHerramientas">
+<?php if ($_SESSION['ID_ROL'] == 4 || $_SESSION['ID_ROL'] == 5) { ?>
+                            <section class="btnsHerramientas">   
+                                <center>
+                                    <ul class="listaMenu">
+                                        <li><h4><a data-toggle="modal" data-target="#ModalAgregarHerramienta" href="Javascript:void(0)">+ Agregar Herramienta</a></h4></li>
+                                        <li><h4><a data-toggle='modal' data-target='#ModalAgregarTipoHerramienta' onclick = "listarTipoHerramientas()" href="Javascript:void(0)">+ Agregar Tipo Herramienta</a></h4></li>
+                                        <li><h4><a onclick="listarTotalHerramientas()" href="Javascript:void(0)">Listar Total Herramientas</a></h4></li>
+                                        <li><h4><a onclick="MostrarListaReparaciones()" href="Javascript:void(0)">Historial y Reparaciones</a></h4></li>
+                                        <li><h4><a onclick="MostrarTransladoHerramienta()" href="Javascript:void(0)">Traslado Herramientas</a></h4></li>
+                                    </ul>
+                                </center>
+                            </section>  
+<?php } ?>
+                    </div>
+
+                    <input type="hidden" name="txtTotalHerramienta" value="" />
+
+                    <!--Lista TOTAL HERRAMIENTAS-->
+
+                    <div class="MostrarBusquedaHerramienta">
+                        <div class="panel panel-info" style=" width: auto">
+
+                            <div class="panel-heading" id="headerpnlTotalHerra"><h4 id="tituloHeaderListadoH">Listado Total De Herramientas</h4>
+                                <button id="btnImprimirHerramientas1" type="submit"  class="btn btn-default"><img src="../resources/imagenes/Excel.png" alt="" width="20"/> </button>
+                            </div>
+                            <div class="panel-body">
+                                <div id="bodyBusquedaHerramientas">
+                                    <div id="buscarCodigo" style="float: left;width: 50%;" class="form-group "><p>Ordenar Herramientas</p> 
+                                    </div>
+
+                                    <div class="opcionesHerramientas">
+
 
                                         <table>
-				 <tr>
-				 <td class="translado">
-				  
-				 <div style="width: 60%;" class="form-group ">
-				   <div class="buscarHerramienta" style=" width: 100%;">
-				       <div class="input-group">
-					  
-                          <input id="txtCodigoHerra" name="txtCodigoHerra" type="text" class="form-control" placeholder="Código" onclick="LimpiarListadoCombo()" onchange="FiltroInicioL()">
-                          <span class="input-group-btn">
-                          <button id="btnBuscarCodigo" class="btn btn-default" type="button" onclick="BuscarHerramientasPorCodigo()"><img src="../resources/imagenes/icono_buscar.png" width="18px" alt=""/></button>
-					      </span>							
-                       </div>	
-                     </div>
-                 </div>
-               
+                                            <tr>
+                                                <td class="translado">
 
-				 </td>
-				 <td class="translado">
-				 <div style="width: 70%;" class="form-group ">
-                    <div class="buscarHerramienta" style=" width: 100%;margin-right: 40px">    
-                  			<Select style="font-size: 15px" class="form-control" name= "cboFiltroHerramienta"  id="cboFiltroHerramienta"  onchange="FiltrosHerramientas()" onclick="LimpiarCampoCodigo()">        
-				         	<option value="0">Ordenar por...</option>
-							<option value="1">Tipo</option>
-					        <option value="2">Disposicion</option>
-					        <option value="3">Ubicacion</option>
-					        <option value="4">Estado</option>					
-                            </select>				
-                	
-                    </div>
-                 </div>
-				 </td>
-				 </tr>
-				 </table>
-                       </div>
-          
-                            <table class="table-bordered table-responsive tablasG" id='tbl_total_herramientas'>
-                                <thead>
-                                    <tr>
-                                        <th>Código</th> 
-                                        <th>Tipo</th>
-                                        <th>Descripción</th>
-                                        <th>Fecha Registro</th>
-					<th>Precio</th>
-                                        <th>Disposición</th>       
-                                        <th>Ubicación</th>
-                                        <th>Estado</th> 
-                                    </tr>
-                                </thead>
-                                <tbody id="listadoHerramientas">
-                                </tbody>
-                            </table> 
-                           </div> 
+                                                    <div style="width: 60%;" class="form-group ">
+                                                        <div class="buscarHerramienta" style=" width: 100%;">
+                                                            <div class="input-group">
+
+                                                                <input id="txtCodigoHerra" name="txtCodigoHerra" type="text" class="form-control" placeholder="Código" onclick="LimpiarListadoCombo()" onchange="FiltroInicioL()">
+                                                                <span class="input-group-btn">
+                                                                    <button id="btnBuscarCodigo" class="btn btn-default" type="button" onclick="BuscarHerramientasPorCodigo()"><img src="../resources/imagenes/icono_buscar.png" width="18px" alt=""/></button>
+                                                                </span>							
+                                                            </div>	
+                                                        </div>
+                                                    </div>
+
+
+                                                </td>
+                                                <td class="translado">
+                                                    <div style="width: 70%;" class="form-group ">
+                                                        <div class="buscarHerramienta" style=" width: 100%;margin-right: 40px">    
+                                                            <Select style="font-size: 15px" class="form-control" name= "cboFiltroHerramienta"  id="cboFiltroHerramienta"  onchange="FiltrosHerramientas()" onclick="LimpiarCampoCodigo()">        
+                                                                <option value="0">Ordenar por...</option>
+                                                                <option value="1">Tipo</option>
+                                                                <option value="2">Disposición</option>
+                                                                <option value="3">Ubicacion</option>
+                                                                <option value="4">Estado</option>
+                                                                <option value="5">Ver totales</option>
+                                                            </select>				
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <table class="table-bordered table-responsive tablasG" id='tbl_total_herramientas'>
+                                        <thead>
+                                            <tr>
+                                                <th>Código</th> 
+                                                <th>Tipo</th>
+                                                <th>Descripción</th>
+                                                <th>Fecha Registro</th>
+                                                <th>Precio</th>
+                                                <th>Disposición</th>       
+                                                <th>Ubicación</th>
+                                                <th>Estado</th> 
+                                            </tr>
+                                        </thead>
+                                        <tbody id="listadoHerramientas">
+                                        </tbody>
+                                    </table> 
+                                    <table class="table-bordered table-responsive tablasG" style="display: none" id='tbl_total__tipo_herramientas'>
+                                        <thead>
+                                            <tr>
+                                                <th>Descripción</th>
+                                                <th>Cantidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="listadoTotalTipoHerramientas">
+
+                                        </tbody>
+                                    </table> 
+                                </div> 
+                            </div>
                         </div>
-                    </div>
-                </div>       
+                    </div>       
 
-  </form>
+                </form>
                 <!-- AGREGAR TIPO HERRAMIENTA MODAL -->
 
                 <div  id="ModalAgregarTipoHerramienta" class="modal fade" role="dialog">   
@@ -240,27 +256,27 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
                             <div class="modal-body">
                                 <form method="POST" name="frmInsertar" class="form-horizontal" action="">
-								
-								
-						   <div class="form-group"> 							
-                                <label class="col-lg-2">Código Mayor</label> 
-                                <div class="col-lg-10">
-                                    <div class="input-group col-md-7">
-								    <input type="txtCodigoH" class="form-control" value="<?php echo ObtenerConsecutivoHerramienta() ?>" name="txtCodigoH" id="txtCodigoH" disabled />
-									</div>
-                                </div>
-                            </div>
-							
-							<div class="form-group">    
-                                <label class="col-lg-2">Código</label> 
-                                <div class="col-lg-10">
-                                    <div class="input-group col-md-7">
-								    <input type="txtCodigoH2" class="form-control"  placeholder="Código" name="txtCodigoH2" id="txtCodigoH2" />
-									</div>
-                                </div>
-                            </div>
-									
-									
+
+
+                                    <div class="form-group"> 							
+                                        <label class="col-lg-2">Código Mayor</label> 
+                                        <div class="col-lg-10">
+                                            <div class="input-group col-md-7">
+                                                <input type="txtCodigoH" class="form-control" value="<?php echo ObtenerConsecutivoHerramienta() ?>" name="txtCodigoH" id="txtCodigoH" disabled />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">    
+                                        <label class="col-lg-2">Código</label> 
+                                        <div class="col-lg-10">
+                                            <div class="input-group col-md-7">
+                                                <input type="txtCodigoH2" class="form-control"  placeholder="Código" name="txtCodigoH2" id="txtCodigoH2" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <div class="form-group">    
                                         <label class="col-lg-2">Descripcion</label> 
                                         <div class="col-md-8">
@@ -273,14 +289,14 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
                                             <textarea type="text" name="txtMarcaH" id="txtMarcaH" class="form-control " placeholder="Marca"></textarea>
                                         </div>
                                     </div>
-									
-							<div class="form-group">    
-                                <label class="col-lg-2">Precio</label> 
-                                <div class="col-md-8">
-                                    <input type="text"  name="txtPrecioH" id="txtPrecioH" class="form-control " onkeypress="return soloNumeros(event)" placeholder="Precio"/>
-								</div>
-                            </div>
-							
+
+                                    <div class="form-group">    
+                                        <label class="col-lg-2">Precio</label> 
+                                        <div class="col-md-8">
+                                            <input type="text"  name="txtPrecioH" id="txtPrecioH" class="form-control " onkeypress="return soloNumeros(event)" placeholder="Precio"/>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">    
                                         <label class="col-lg-2">Fecha</label> 
                                         <div class="col-md-6">
@@ -323,7 +339,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group">    
                                         <label class="col-lg-2">Num. Factura</label> 
                                         <div class="col-md-6">
@@ -437,124 +453,124 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
                 <!--MUESTRA EL HISTORIAL DE FACTURAS Y TRASLADOS DE LAS HERARAMIENTAS    MostrarHistorialHerramienta-->
                 <form action="../BLL/ReportesExcel.php" method="POST">
-                 <input id="codigo" type="hidden" name="codigo" value="" />
-                <div class="MostrarHistorialHerramienta" style="display: none" id=""> 
-                    <div class="panel panel-info" style=" width: auto">
-                        <div class="panel-heading"><h4>Historial de Gastos</h4>
-                            <button class="btn btn-default" id="btnExportarExcelHistorialGastos" style="float: right" >
-                                <img src="../resources/imagenes/Excel.png" width="20"/>
-                            </button>
-                        </div> 
-                        <div class="panel-body">
+                    <input id="codigo" type="hidden" name="codigo" value="" />
+                    <div class="MostrarHistorialHerramienta" style="display: none" id=""> 
+                        <div class="panel panel-info" style=" width: auto">
+                            <div class="panel-heading"><h4>Historial de Gastos</h4>
+                                <button class="btn btn-default" id="btnExportarExcelHistorialGastos" style="float: right" >
+                                    <img src="../resources/imagenes/Excel.png" width="20"/>
+                                </button>
+                            </div> 
+                            <div class="panel-body">
 
-                            <div id="informacionHerramienta" style="width: 100%">
+                                <div id="informacionHerramienta" style="width: 100%">
+
+                                    <table>
+                                        <tr>
+                                            <td class ="translado">
+                                                <h4>Herramienta:
+                                                    <span id ="NombreHerramienta">  </span>  
+                                                </h4>
+
+                                            <td>
+                                            <td class ="translado">
+                                                <h4>Fecha Adquirida:
+                                                    <span id ="FechaAdquisicion">  </span>  
+                                                </h4>						
+
+                                            </td>					
+                                        </tr>
+
+                                        <tr>
+                                            <td class ="translado">
+                                                <h4>Marca:
+                                                    <span id ="HerramientaMarca">  </span>  
+                                                </h4>
+
+                                            <td>
+                                            <td class ="translado">
+                                                <h4>Procedencia:
+                                                    <span id ="ProcedenciaHerramienta">  </span>  
+                                                </h4>						
+
+                                            </td>					
+                                        </tr>
+
+                                        <!-- ----------------Nuevoooo --------------------- !--> 
+                                        <tr>
+                                            <td class ="translado">
+                                                <h4>Num Factura Herramienta:
+                                                    <span id ="numFactHerramienta">  </span>  
+                                                </h4>
+
+                                            <td>
+                                            <td class ="translado">
+                                                <h4>Precio Herramienta:
+                                                    <span id ="precioHerramienta">  </span>  
+                                                </h4>						
+
+                                            </td>					
+                                        </tr>
+
+                                        <!-- --------------Nuevoooo --------------------- !-->  
+
+                                    </table>
+
+                                </div>
+
+                                <div style="width: 100%">
+                                    <h4>Descripción:
+                                        <span id ="DescripcionHerramienta">  </span>  
+                                    </h4>
+
+                                </div>
+                                <hr>
+
+
+
+                                <h3>Reparaciones</h3>
+
+                                <table class="table-bordered table-responsive tablasG" id='tablaReparacionesTotal'>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Numero Factura</th>
+                                            <th>Descripción</th>
+                                            <th>Costo</th>				
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablareparacionestotales">
+                                    </tbody>
+                                </table> 
+
+                                <br>
+                                <hr>
+                                <br>
 
                                 <table>
                                     <tr>
-                                        <td class ="translado">
-                                            <h4>Herramienta:
-                                                <span id ="NombreHerramienta">  </span>  
-                                            </h4>
-
-                                        <td>
-                                        <td class ="translado">
-                                            <h4>Fecha Adquirida:
-                                                <span id ="FechaAdquisicion">  </span>  
-                                            </h4>						
-
-                                        </td>					
+                                        <td class="translado">
+                                            <h3 style ="margin-top: 15px">Control de Traslados de Herramienta</h3>
+                                        </td>
                                     </tr>
-
-                                    <tr>
-                                        <td class ="translado">
-                                            <h4>Marca:
-                                                <span id ="HerramientaMarca">  </span>  
-                                            </h4>
-
-                                        <td>
-                                        <td class ="translado">
-                                            <h4>Procedencia:
-                                                <span id ="ProcedenciaHerramienta">  </span>  
-                                            </h4>						
-
-                                        </td>					
-                                    </tr>
-                                    
-                            <!-- ----------------Nuevoooo --------------------- !--> 
-                                    <tr>
-                                        <td class ="translado">
-                                            <h4>Num Factura Herramienta:
-                                                <span id ="numFactHerramienta">  </span>  
-                                            </h4>
-
-                                        <td>
-                                        <td class ="translado">
-                                            <h4>Precio Herramienta:
-                                                <span id ="precioHerramienta">  </span>  
-                                            </h4>						
-
-                                        </td>					
-                                    </tr>
-                                    
-                            <!-- --------------Nuevoooo --------------------- !-->  
-                                
                                 </table>
 
-                            </div>
+                                <table class="table-bordered table-responsive tablasG" id='tablaTrasladosTotal'>
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>                           
+                                            <th>NºBoleta</th>
+                                            <th>Ubicación</th>
+                                            <th>Destino</th>	
 
-                            <div style="width: 100%">
-                                <h4>Descripción:
-                                    <span id ="DescripcionHerramienta">  </span>  
-                                </h4>
-
-                            </div>
-                            <hr>
-
-
-
-                          <h3>Reparaciones</h3>
-
-                            <table class="table-bordered table-responsive tablasG" id='tablaReparacionesTotal'>
-                                <thead>
-                                    <tr>
-                                        <th>Fecha</th>
-                                        <th>Numero Factura</th>
-                                        <th>Descripción</th>
-                                        <th>Costo</th>				
-                                    </tr>
-                                </thead>
-                                <tbody id="tablareparacionestotales">
-                                </tbody>
-                            </table> 
-
-                            <br>
-                            <hr>
-                            <br>
-
-                            <table>
-                                <tr>
-                                    <td class="translado">
-                                        <h3 style ="margin-top: 15px">Control de Traslados de Herramienta</h3>
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <table class="table-bordered table-responsive tablasG" id='tablaTrasladosTotal'>
-                                <thead>
-                                    <tr>
-                                        <th>Fecha</th>                           
-                                        <th>NºBoleta</th>
-                                        <th>Ubicación</th>
-                                        <th>Destino</th>	
-
-                                    </tr>
-                                </thead>
-                                <tbody id="tablatrasladostotales">
-                                </tbody>
-                            </table> 
-                        </div> 
-                    </div>   
-                </div>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablatrasladostotales">
+                                    </tbody>
+                                </table> 
+                            </div> 
+                        </div>   
+                    </div>
 
                 </form>
 
@@ -563,7 +579,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
                 <div class="MostrarTransladoHerramienta">
                     <div class="panel panel-info" style=" width: auto">
-                       <div class="panel-heading"><h4>Listado De Herramientas En Proyectos</h4>
+                        <div class="panel-heading"><h4>Listado De Herramientas En Proyectos</h4>
 
                             <table id="tbl_BotnesTrasdado">
                                 <tr>
@@ -575,7 +591,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
                                     </td>
                                 </tr>
                             </table>
-                       </div>
+                        </div>
 
                         <div class="panel-body">		
 
@@ -675,7 +691,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
 
                 </section>
-                
+
             </div>  
 
 
@@ -890,7 +906,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
 
                             <div class="modal-footer">
-                                <button  type="button" class="btn btn-default btn-estilos" onclick="Exportar_Pdf('ContenidoBoletaReparacion_Selecionado','tblFechaBoletaReparacion','consecutivoBoletaReparacionSeleccionado','','TipoPedidoBoletaReparacion','generadaPorBoletaReparacion')">
+                                <button  type="button" class="btn btn-default btn-estilos" onclick="Exportar_Pdf('ContenidoBoletaReparacion_Selecionado', 'tblFechaBoletaReparacion', 'consecutivoBoletaReparacionSeleccionado', '', 'TipoPedidoBoletaReparacion', 'generadaPorBoletaReparacion')">
                                     <img  src="../resources/imagenes/print.png" alt="" width="30px"/>
                                 </button>
                                 <button type="button" class="btn btn-danger btn-estilos" onclick="AnularBoletaMaterial()">Eliminar</button>
@@ -975,9 +991,9 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
 
                                             </tbody>
                                         </table>
-                                             <br>
-                                       <p>Provedor Reparacion: <input type="text" class="form-control input-md" id="provedorReparacion" name="provedorReparacion" value="" />
-                                           </p>                                   
+                                        <br>
+                                        <p>Provedor Reparacion: <input type="text" class="form-control input-md" id="provedorReparacion" name="provedorReparacion" value="" />
+                                        </p>                                   
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default btn-estilos" onclick="">
@@ -1035,14 +1051,14 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
                                         </table>
                                     </div>
 
-                                     <h4>Boleta: <strong>Traslado Herramientas</strong></h4>
-                                     <h4>Destino del Traslado:
-                                     <span id ="DestinoTrasl">  </span>  									   
-                                     </h4>
-						             <h5  style="display:none;">Fecha:
-                                     <span id ="FechaFinal"  style="display:none;">  </span>  									   
-                                     </h5>								   
-                                   
+                                    <h4>Boleta: <strong>Traslado Herramientas</strong></h4>
+                                    <h4>Destino del Traslado:
+                                        <span id ="DestinoTrasl">  </span>  									   
+                                    </h4>
+                                    <h5  style="display:none;">Fecha:
+                                        <span id ="FechaFinal"  style="display:none;">  </span>  									   
+                                    </h5>								   
+
 
                                     <hr>
 
@@ -1057,7 +1073,7 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
                                                     <th>FechaIngreso</th>
                                                     <th>Marca</th>	
                                                     <th>Descripcion</th>
-													<th></th>													
+                                                    <th></th>													
                                                 </tr>
                                             </thead>
                                             <tbody id="tablaMostrarTraslado">
@@ -1068,23 +1084,23 @@ session_start();if(!isset($_SESSION['Nombre'])){header("Location: ../index.html"
                                         <h5>Ubicación Destino: 
                                         </h5>
 
-                                       <Select style="font-size: 15px" class="form-control" name= "cboFiltroTipoHerramientaT"  id="cboFiltroTipoHerramientaT" onchange="guardarNombreDestino()"">        
-								       <option value="0">Seleccione El Destino</option>
-								       <?php
-                                       $conexion = new Conexion();
-                                       $conn = $conexion->CrearConexion();
-                                       $sql = "Select DISTINCT ID_Proyecto,Nombre from tbl_proyectos";
-                                       $rec =  $conn->query($sql);
-                                       $conn->close(); 
-                                       if ($rec != null) {
-                                       while ($row = mysqli_fetch_array($rec,MYSQLI_ASSOC)) {
-                                        echo "<option value ='" . $row['ID_Proyecto'], "'>";
-                                        echo $row['Nombre'];
-                                        echo "</option>";
-                                       }
-                                    }
-                                    ?>				
-                                  </select>
+                                        <Select style="font-size: 15px" class="form-control" name= "cboFiltroTipoHerramientaT"  id="cboFiltroTipoHerramientaT" onchange="guardarNombreDestino()"">        
+                                            <option value="0">Seleccione El Destino</option>
+                                            <?php
+                                            $conexion = new Conexion();
+                                            $conn = $conexion->CrearConexion();
+                                            $sql = "Select DISTINCT ID_Proyecto,Nombre from tbl_proyectos";
+                                            $rec = $conn->query($sql);
+                                            $conn->close();
+                                            if ($rec != null) {
+                                                while ($row = mysqli_fetch_array($rec, MYSQLI_ASSOC)) {
+                                                    echo "<option value ='" . $row['ID_Proyecto'], "'>";
+                                                    echo $row['Nombre'];
+                                                    echo "</option>";
+                                                }
+                                            }
+                                            ?>				
+                                        </select>
                                         <br>
                                     </div>
 

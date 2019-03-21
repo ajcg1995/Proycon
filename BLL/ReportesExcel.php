@@ -106,9 +106,9 @@ function ExportarExcelMaterialesProyecto($ID_Proyecto) {
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+      //  'type' => PHPExcel_Style_Fill::FILL_SOLID,
+      //  'startcolor' => array('rgb' => 'ffffff')));
 
     //$rango="C2:F3";
     // $styleArray = array('font' => array( 'name' => 'Calibri','size' => 18)); 
@@ -198,9 +198,9 @@ function ExportarPendientesProyecto($ID_Proyecto){
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+      //  'type' => PHPExcel_Style_Fill::FILL_SOLID,
+      //  'startcolor' => array('rgb' => 'ffffff')));
 
     //$rango="C2:F3";
     // $styleArray = array('font' => array( 'name' => 'Calibri','size' => 18)); 
@@ -316,9 +316,9 @@ function ExportarExcelHerramientasProyecto($ID_Proyecto) {
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+    //    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+     //   'startcolor' => array('rgb' => 'ffffff')));
     $objPHPExcel->getActiveSheet()->getStyle('C6:G6')->applyFromArray(
             array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 14, 'color' => array('rgb' => 'ffffff')),
                 'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER),
@@ -415,9 +415,9 @@ function ExportarVerTotalesMateriales($ID_Proyecto) {
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F6')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+    //$objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+    //    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+     //   'startcolor' => array('rgb' => 'ffffff')));
 
     //$rango="C2:F3";
     // $styleArray = array('font' => array( 'name' => 'Calibri','size' => 18)); 
@@ -494,9 +494,9 @@ function ExportarVerTotalesHerramienta($ID_Proyecto){
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+    //    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+    //   'startcolor' => array('rgb' => 'ffffff')));
 
     //$rango="C2:F3";
     // $styleArray = array('font' => array( 'name' => 'Calibri','size' => 18)); 
@@ -600,9 +600,9 @@ $totalDevuelto = 0;
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F6')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+   //     'type' => PHPExcel_Style_Fill::FILL_SOLID,
+    //    'startcolor' => array('rgb' => 'ffffff')));
     $objPHPExcel->getActiveSheet()->getStyle('C8:E8')->applyFromArray(
             array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 14, 'color' => array('rgb' => 'ffffff')),
                 'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER),
@@ -697,9 +697,9 @@ $result = $bdMateriales->listarTotalMateriales();
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+   //     'type' => PHPExcel_Style_Fill::FILL_SOLID,
+    //    'startcolor' => array('rgb' => 'ffffff')));
 
     //$rango="C2:F3";
     // $styleArray = array('font' => array( 'name' => 'Calibri','size' => 18)); 
@@ -781,9 +781,9 @@ $result = $bdMateriales->BuscarTiempoRealHerramienta($consulta);
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+    //    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+    //    'startcolor' => array('rgb' => 'ffffff')));
 
     //$rango="C2:F3";
     // $styleArray = array('font' => array( 'name' => 'Calibri','size' => 18)); 
@@ -872,9 +872,9 @@ $result = $bdProyecto ->FitrosMaterialesProyecto("SELECT tp.ID_Material,m.Nombre
     $objPHPExcel->setActiveSheetIndex(0);
     $rango = "C7:G$i";
     $objPHPExcel->getActiveSheet()->getStyle('C2:F4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+    //    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+     //   'startcolor' => array('rgb' => 'ffffff')));
 
     $objPHPExcel->getActiveSheet()->getStyle('C6:G6')->applyFromArray(
             array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 14, 'color' => array('rgb' => 'ffffff')),
@@ -973,9 +973,9 @@ $totalDevuelto = 0;
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F6')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+   //     'type' => PHPExcel_Style_Fill::FILL_SOLID,
+   //     'startcolor' => array('rgb' => 'ffffff')));
     $objPHPExcel->getActiveSheet()->getStyle('C8:E8')->applyFromArray(
             array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 14, 'color' => array('rgb' => 'ffffff')),
                 'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER),
@@ -1068,9 +1068,9 @@ function CrearReporterHerrmientasFinProyecto($objPHPExcel,$indice,$ID_Proyecto,$
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:F4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+    //    'type' => PHPExcel_Style_Fill::FILL_SOLID,
+    //    'startcolor' => array('rgb' => 'ffffff')));
     $objPHPExcel->getActiveSheet()->getStyle('C6:G6')->applyFromArray(
             array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 14, 'color' => array('rgb' => 'ffffff')),
                 'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER),
@@ -1186,9 +1186,9 @@ function ExportarExcelTotalHerramientas(){
     // Fuente de la primera fila en negrita
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:H4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+       //'type' => PHPExcel_Style_Fill::FILL_SOLID,
+       // 'startcolor' => array('rgb' => 'ffffff')));
 
     //$rango="C2:F3";
     // $styleArray = array('font' => array( 'name' => 'Calibri','size' => 18)); 
@@ -1299,9 +1299,9 @@ function ExportarHistoriaHerramienta(){
     //Alinear al centro ,'alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
     $objPHPExcel->getActiveSheet()->getStyle('C2:H4')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri', 'size' => 18)));
      $objPHPExcel->getActiveSheet()->getStyle('C5:D11')->applyFromArray(array('font' => array('bold' => true, 'name' => 'Calibri')));
-    $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
-        'type' => PHPExcel_Style_Fill::FILL_SOLID,
-        'startcolor' => array('rgb' => 'ffffff')));
+   // $objPHPExcel->getActiveSheet()->getStyle('A1:Z200')->getFill()->applyFromArray(array(
+     //   'type' => PHPExcel_Style_Fill::FILL_SOLID,
+     //   'startcolor' => array('rgb' => 'ffffff')));
 
     //$rango="C2:F3";
     // $styleArray = array('font' => array( 'name' => 'Calibri','size' => 18)); 

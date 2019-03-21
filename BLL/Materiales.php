@@ -117,7 +117,7 @@ if (isset($_GET['opc']))
                 $concatenar .=
                 "<tr>"
                     . "<td>".$fila['codigo'] . "</td>"
-                    . "<td>".$fila['nombre'] . "</td>"
+                    . "<td style='text-align:left'>".$fila['nombre'] . "</td>"
                     . "<td>".$fila['cantidad'] . "</td>"
                 ."</tr>"; 
                         
