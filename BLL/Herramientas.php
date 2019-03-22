@@ -823,6 +823,7 @@ function VerBoletaReparacion($NumBoleta) {
                                                         <td>" . $fila['Codigo'] . "</td>
                                                        <td>" . $fila['Descripcion'] . "</td>
                                                        <td>" . $fila['Marca'] . "</td>
+                                                      <td>" . $fila['proveedor'] . "</td>
                                                     </tr>";
         }
         echo $concatenar;
@@ -1007,13 +1008,13 @@ function BuscarTiempoRealHerramienta($consulta) {
         while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
             $Fecha = date('d/m/Y', strtotime($fila['FechaIngreso']));
-
+             $Monto = "¢" . number_format($fila['Precio'], 2, ",", ".");
             $concatenar .= "<tr>
                     <td>" . $fila['Codigo'] . "</td>
                     <td>" . $fila['Tipo'] . "</td>
                      <td>" . $fila['Descripcion'] . "</td>
                     <td>" . $Fecha . "</td>
-		    <td>" . $fila['Precio'] . "</td>
+		    <td>" . $Monto . "</td>
                     <td>" . $fila['Disposicion'] . "</td>
                     <td>" . $fila['Nombre'] . "</td>
                     <td>" . $fila['Estado'] . "</td>

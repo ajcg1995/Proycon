@@ -790,8 +790,11 @@ function MostrarHistorial()
 
 }
 function AnularBoletaMaterial() {
-    var eliboleta = $("#consecutivoBoletaSeleccionado").html();
-    $.ajax({
+   
+    var eliboleta = $("#consecutivoBoletaReparacionSeleccionado").html();
+     var r = confirm("¿Esta seguro que desea anular la boleta "+eliboleta +"?");
+     if (r) {
+        $.ajax({
         type: "POST",
         url: "../BLL/Herramientas.php?opc=eliminarBoletaR&eliboleta=" + eliboleta,
         success: function (respuesta) {
@@ -802,7 +805,9 @@ function AnularBoletaMaterial() {
                 $('#ModalVerBoletaReparacion').modal('hide');
             }, 3000);
         }
-    })
+    }) 
+    }
+   
 
     setTimeout(function () {
         $("#voletaVista").removeClass("mensajeCorrecto");
@@ -1441,11 +1446,20 @@ function Exportar_Excel(ID_Tabla) {
 
 function BuscarTHerramienta() {
     var codigo = $("#txtTrasladoCodigo").val();
-    $.ajax({
+    if (codigo != "") {
+      $.ajax({
         type: "POST",
         url: "../BLL/Herramientas.php?opc=buscarTraslado&codigo=" + codigo,
         success: function (respuesta) {
-            $("#listadoTransladoHerramienta").html(respuesta);
+            if (respuesta != "") {
+               $("#listadoTransladoHerramienta").html(respuesta); 
+            }
+            else {
+             alert("La herramienta que busca no esta disponible, posiblemente se encuentre en reparación\n\
+                Y una herramienta en reparación no se pude trasladar");
+            }
+
+            
         }
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -1463,7 +1477,9 @@ function BuscarTHerramienta() {
 
         }
 
-    });
+    });  
+    }
+   
 
 
 }
@@ -1543,8 +1559,6 @@ function  BuscarTiempoRealHerramienta(consulta) {
     $("#btnreparaciones").hide();
     $("#BoletaReparacionHerramienta").hide();
     $("#mostrarTablaReparaciones").hide();
-
-    console.log("Entrar Tiempor Real")
     $.ajax({
         type: "POST",
         url: "../BLL/Herramientas.php?opc=buscarTiempoReal",

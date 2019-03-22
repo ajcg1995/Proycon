@@ -340,8 +340,9 @@ class MHerramientas implements IHerrramientas {
 	
 	public function eliminarBoletaR($eliboleta){
 		
-		$conexion = new Conexion();
+        $conexion = new Conexion();
         $conn = $conexion->CrearConexion();
+        
         $sql = "delete from tbl_boletareparacion where NumBoleta = '$eliboleta';";
         $result = $conn->query($sql);
 		$sql2= "select * from tbl_reparacionherramienta where NumBoleta = '$eliboleta';";
@@ -351,7 +352,7 @@ class MHerramientas implements IHerrramientas {
 		$Codigo = $row['Codigo'];
 		$sql3 = "UPDATE tbl_herramientaelectrica SET Disposicion = 1, Estado = 1 WHERE Codigo= '$Codigo'";
 		$result = $conn->query($sql3);
-		}
+	    }
 			
 		$sql4 = "delete from tbl_reparacionherramienta where NumBoleta = '$eliboleta';";
 		$conn->query($sql4);
@@ -424,8 +425,7 @@ class MHerramientas implements IHerrramientas {
     public function VerBoletaReparacion($NumBoleta) {
         $conexion = new Conexion();
         $conn = $conexion->CrearConexion();
-        $sql = "SELECT tr.Codigo,tt.Descripcion,th.Marca from tbl_reparacionherramienta tr, tbl_herramientaelectrica th, tbl_tipoherramienta tt
-				WHERE tr.Codigo = th.Codigo and th.ID_Tipo = tt.ID_Tipo and NumBoleta = $NumBoleta ;";
+        $sql = "SELECT tr.Codigo,tt.Descripcion,th.Marca, boleta.ProveedorReparacion as proveedor from tbl_reparacionherramienta tr, tbl_herramientaelectrica th, tbl_tipoherramienta tt, tbl_boletareparacion boleta WHERE tr.Codigo = th.Codigo and th.ID_Tipo = tt.ID_Tipo and tr.NumBoleta = boleta.NumBoleta and tr.NumBoleta = $NumBoleta ;";
         $result = $conn->query($sql);
         $conn->close();
         return $result;

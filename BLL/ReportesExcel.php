@@ -1125,6 +1125,8 @@ function ExportarExcelTotalHerramientas(){
             break;
         case "4":$result=$bdHerramientas->FiltrosHerramientas4();$x=1;
             break;
+        case "5":$result=$bdHerramientas->FiltrarTipoTotalHerramienta();$x=2;
+            break;
         default:
             break;
     };
@@ -1139,15 +1141,7 @@ function ExportarExcelTotalHerramientas(){
 
     $objPHPExcel->setActiveSheetIndex(0)->mergeCells('C2:F2');
     $objPHPExcel->setActiveSheetIndex(0)->mergeCells('C3:F3');
-    $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue('C2', 'Proycon S.A')
-            ->setCellValue('C3', 'Reporte Total de Herramietas')
-            ->setCellValue('C6', 'CODIGO')
-            ->setCellValue('D6', 'TIPO')
-            ->setCellValue('E6', 'FECHA REGISTRO')
-             ->setCellValue('F6', 'DISPOSICION')
-             ->setCellValue('G6', 'UBICACION')
-            ->setCellValue('H6', 'ESTADO');
+
 
     
 //codigo,nombre,cantidad
@@ -1155,6 +1149,15 @@ function ExportarExcelTotalHerramientas(){
 
     $i = 7;
     if ($x == 0) {
+      $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('C2', 'Proycon S.A')
+            ->setCellValue('C3', 'Reporte Total de Herramietas')
+            ->setCellValue('C6', 'CODIGO')
+            ->setCellValue('D6', 'TIPO')
+            ->setCellValue('E6', 'FECHA REGISTRO')
+             ->setCellValue('F6', 'DISPOSICION')
+             ->setCellValue('G6', 'UBICACION')
+            ->setCellValue('H6', 'ESTADO');      
        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $objPHPExcel->setActiveSheetIndex(0)                  
                 ->setCellValue("C$i", $fila['Codigo'])
@@ -1166,7 +1169,30 @@ function ExportarExcelTotalHerramientas(){
         $i++;
     }  
     }
+    else if ($x == 2) {
+            $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('C2', 'Proycon S.A')
+            ->setCellValue('C3', 'Reporte Total de Herramietas')
+            ->setCellValue('C6', 'TIPO')
+            ->setCellValue('D6', 'CANTIDAD');
+     while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        $objPHPExcel->setActiveSheetIndex(0)                  
+                ->setCellValue("C$i", $fila['Descripcion'])
+                ->setCellValue("D$i", $fila['Cantidad']);
+        $i++;
+    }     
+    }
  else {
+         $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('C2', 'Proycon S.A')
+            ->setCellValue('C3', 'Reporte Total de Herramietas')
+            ->setCellValue('C6', 'CODIGO')
+            ->setCellValue('D6', 'TIPO')
+            ->setCellValue('E6', 'FECHA REGISTRO')
+             ->setCellValue('F6', 'DISPOSICION')
+             ->setCellValue('G6', 'UBICACION')
+            ->setCellValue('H6', 'ESTADO');
+         
              while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $objPHPExcel->setActiveSheetIndex(0)                  
                 ->setCellValue("C$i", $fila['Codigo'])

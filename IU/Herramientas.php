@@ -894,6 +894,7 @@ if (!isset($_SESSION['Nombre'])) {
                                                 <th>Código</th>
                                                 <th>Tipo</th>
                                                 <th>Marca</th>
+                                                <th>Proveedor reparación</th>
                                             </tr>
                                         </thead>
                                         <tbody id="contenidoBoletaReparacion">
@@ -996,9 +997,9 @@ if (!isset($_SESSION['Nombre'])) {
                                         </p>                                   
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default btn-estilos" onclick="">
+                                      <!--  <button type="button" class="btn btn-default btn-estilos" onclick="">
                                             <img src="../resources/imagenes/print.png" alt="" width="30px"/>
-                                        </button>
+                                        </button>-->
                                         <button type="button" class="btn btn-success btn-estilos" onclick="GuardarBoletaReparaciones()">Guardar</button>
 
                                     </div>
