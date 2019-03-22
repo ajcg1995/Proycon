@@ -926,7 +926,7 @@ function trasladosTotales($codigo) {
                         <td>" . $Fecha . "</td>
                         <td>" . $fila['NumBoleta'] . "</td>
                         <td>" . $fila['Ubicacion'] . "</td>
-                        <td>" . "Bodega" . "</td>       
+                        <td>" . "En reparacion" . "</td>       
 						</tr>";
             }else{
                 
@@ -934,7 +934,7 @@ function trasladosTotales($codigo) {
                     $concatenar .= "<tr>
                         <td>" . $Fecha . "</td>
                         <td>" . $fila['NumBoleta'] . "</td>
-                        <td>" . "Bodega"  . "</td>
+                        <td>" . "En reparacion"  . "</td>
                         <td>" . $fila['Destino'] . "</td>       
 						</tr>";                      
                 }else{
