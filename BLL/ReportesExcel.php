@@ -95,7 +95,7 @@ function ExportarExcelMaterialesProyecto($ID_Proyecto) {
                 ->setCellValue("C$i", $fila['Codigo'])
                 ->setCellValue("D$i", $fila['Nombre'])
                 ->setCellValue("E$i", $fila['Cantidad'])
-                ->setCellValue("F$i", $fila['Fecha'])
+                ->setCellValue("F$i", date('d/m/Y', strtotime($fila['Fecha'])))
                 ->setCellValue("G$i", $fila['Consecutivo']);
         $i++;
     }
@@ -305,11 +305,12 @@ function ExportarExcelHerramientasProyecto($ID_Proyecto) {
         $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue("C$i", $fila['Codigo'])
                 ->setCellValue("D$i", $fila['Descripcion'])
-                ->setCellValue("E$i", $fila['FechaSalida'])
+                ->setCellValue("E$i", date('d/m/Y', strtotime($fila['FechaSalida'])))
                 ->setCellValue("F$i", $fila['NBoleta'])
                 ->setCellValue("G$i", $estado);
         $i++;
     }
+        
     $rango = "C7:G$i";
 
 //
@@ -574,10 +575,11 @@ $totalDevuelto = 0;
         $totalDevuelto = $totalDevuelto+$fila['Cantidad'];
         $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue("C$i", $fila['Cantidad'])
-                ->setCellValue("D$i", $fila['fecha'])
+                ->setCellValue("D$i", date('d/m/Y', strtotime($fila['fecha'])))
                 ->setCellValue("E$i", $fila['NBoleta']);
         $i++;
     }
+
     $rango = "C8:E$i";
 
     $x =  $i=$i+4;
@@ -947,10 +949,11 @@ $totalDevuelto = 0;
         $totalDevuelto = $totalDevuelto+$fila['Cantidad'];
         $objPHPExcel->setActiveSheetIndex($indice)
                 ->setCellValue("C$i", $fila['Cantidad'])
-                ->setCellValue("D$i", $fila['fecha'])
+                ->setCellValue("D$i", date('d/m/Y', strtotime($fila['fecha'])))
                 ->setCellValue("E$i", $fila['NBoleta']);
         $i++;
     }
+    
     $rango = "C8:E$i";
 
     $x =  $i=$i+4;
@@ -1054,10 +1057,11 @@ function CrearReporterHerrmientasFinProyecto($objPHPExcel,$indice,$ID_Proyecto,$
         } else {
             $estado = "Reparacion";
         }
+       
         $objPHPExcel->setActiveSheetIndex($indice)
                 ->setCellValue("C$i", $fila['Codigo'])
                 ->setCellValue("D$i", $fila['Descripcion'])
-                ->setCellValue("E$i", $fila['FechaSalida'])
+                ->setCellValue("E$i", date('d/m/Y', strtotime($fila['FechaSalida'])))
                 ->setCellValue("F$i", $fila['NBoleta'])
                 ->setCellValue("G$i", $estado);
         $i++;
@@ -1162,7 +1166,7 @@ function ExportarExcelTotalHerramientas(){
         $objPHPExcel->setActiveSheetIndex(0)                  
                 ->setCellValue("C$i", $fila['Codigo'])
                 ->setCellValue("D$i", $fila['Tipo'])
-                ->setCellValue("E$i", $fila['FechaIngreso'])
+                ->setCellValue("E$i", date('d/m/Y', strtotime($fila['FechaIngreso'])))
                 ->setCellValue("F$i", $fila['Disposicion'])
                 ->setCellValue("G$i", $fila['Nombre'])
                 ->setCellValue("H$i", $fila['Estado']);
@@ -1197,7 +1201,7 @@ function ExportarExcelTotalHerramientas(){
         $objPHPExcel->setActiveSheetIndex(0)                  
                 ->setCellValue("C$i", $fila['Codigo'])
                 ->setCellValue("D$i", $fila['Descripcion'])
-                ->setCellValue("E$i", $fila['FechaIngreso'])
+                ->setCellValue("E$i", date('d/m/Y', strtotime($fila['FechaIngreso'])))
                 ->setCellValue("F$i", $fila['Disposicion'])
                 ->setCellValue("G$i", $fila['Nombre'])
                 ->setCellValue("H$i", $fila['Estado']);

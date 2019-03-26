@@ -1116,7 +1116,7 @@ function MostrarHistorial()
         url: "../BLL/Herramientas.php?opc=reparacionesTotales&codigo=" + codigo,
         success: function (respuesta) {
             if (respuesta != "") {
-
+                 console.log(respuesta);
                 $('#tablareparacionestotales').html(respuesta);
             }
         },
@@ -1176,7 +1176,7 @@ function MostrarHistorial()
         type: "POST",
         url: "../BLL/Herramientas.php?opc=InfoHerramienta&codigo=" + codigo,
         success: function (respuesta) {
-            console.log(respuesta);
+            console.log ("header = "+respuesta);
             var informacion = respuesta;
             var Cadena = informacion.split(";");
             var Codigo = Cadena[0];
