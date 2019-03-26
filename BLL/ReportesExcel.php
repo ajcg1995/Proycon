@@ -1367,12 +1367,20 @@ function ExportarHistoriaHerramienta(){
       $result = $bdHerramientas->trasladosTotales($_POST['codigo']);
       $i++;
       while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-               $objPHPExcel->setActiveSheetIndex(0)                  
-                ->setCellValue("C$i", $fila['Fecha'] )
+
+
+        $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue("C$i", $fila['Fecha'])
                 ->setCellValue("D$i", $fila['NumBoleta'])
-                ->setCellValue("E$i", $fila['Ubicacion'])
-                ->setCellValue("F$i", $fila['Destino']);
-             $i++;
+                
+                
+                ->setCellValue("E$i", ($fila['Ubicacion'] == "") ? "En Reparacion": $fila['Ubicacion'])
+                    
+                    
+                ->setCellValue("F$i", ($fila['Destino'] == "") ? "En Reparacion" : $fila['Destino']);
+
+
+        $i++;
     }
 
     $rango ="C$x:F$i";
