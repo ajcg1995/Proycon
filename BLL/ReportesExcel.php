@@ -1322,9 +1322,11 @@ function ExportarHistoriaHerramienta(){
         $i++;
     }  
     $x=$i+1;
+    
+    $valorTotal = "¢" . number_format($monto, 2, ",", ".");
      $objPHPExcel->setActiveSheetIndex(0) 
                 ->setCellValue("E$x", 'Total')
-                ->setCellValue("F$x", "¢".$monto);
+                ->setCellValue("F$x", $valorTotal);
      
     $rango = "C15:F$i";
      $i = $i+2;
