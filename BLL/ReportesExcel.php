@@ -1292,25 +1292,29 @@ function ExportarHistoriaHerramienta(){
     $i = 16;
     $result = $bdHerramientas->InfoHerramienta($_POST['codigo']);
     $fila = mysqli_fetch_array($result, MYSQLI_ASSOC);
+    $valorHerramienta = "¢" . number_format($fila['Precio'], 2, ",", ".");
         $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('D5',$_POST['codigo'] )
             ->setCellValue('D6', $fila['Marca'])
             ->setCellValue('D7', $fila['Descripcion'])
             ->setCellValue('D8', $fila['FechaIngreso'])
             ->setCellValue('D9', $fila['Procedencia'])
-            ->setCellValue('D10', "¢".$fila['Precio'])
+            ->setCellValue('D10', $valorHerramienta)
             ->setCellValue('D11', $fila['NumFactura']);
         
         
     $monto=0;
    $result =$bdHerramientas->reparacionesTotales($_POST['codigo']);
      while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+         
+        $Monto = "¢" . number_format($fila['MontoReparacion'], 2, ",", ".");
+        
          $monto = $monto+$fila['MontoReparacion'];
         $objPHPExcel->setActiveSheetIndex(0)                  
                 ->setCellValue("C$i", $fila['FechaEntrada'])
                 ->setCellValue("D$i", $fila['ID_FacturaReparacion'])
                 ->setCellValue("E$i", $fila['Descripcion'])
-                ->setCellValue("F$i", "¢".$fila['MontoReparacion']);
+                ->setCellValue("F$i", $Monto);
         $i++;
     }  
     $x=$i+1;
