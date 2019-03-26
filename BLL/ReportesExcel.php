@@ -1387,6 +1387,7 @@ function ExportarHistoriaHerramienta(){
         'borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('argb' => 'FFF')))));
     
     
+        
    
     /* Establecer tamanos a las celdas */
     $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(25);
