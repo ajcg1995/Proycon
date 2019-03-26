@@ -9,8 +9,26 @@ function FiltrosHerramientas() {
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
                     $('#tbl_total_herramientas').css("display","block"); 
-                }
-            });
+                },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
             break;
         case "1":
             $.ajax({
@@ -19,8 +37,26 @@ function FiltrosHerramientas() {
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
                     $('#tbl_total_herramientas').css("display","block"); 
-                }
-            });
+                },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
             break;
         case "2":
             $.ajax({
@@ -29,8 +65,26 @@ function FiltrosHerramientas() {
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
                     $('#tbl_total_herramientas').css("display","block"); 
-                }
-            });
+                },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
             break;
         case "3":
             $.ajax({
@@ -39,8 +93,26 @@ function FiltrosHerramientas() {
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
                     $('#tbl_total_herramientas').css("display","block"); 
-                }
-            });
+                },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
             break;
         case "4":
             $.ajax({
@@ -49,8 +121,26 @@ function FiltrosHerramientas() {
                 success: function (result) {
                     $('#listadoHerramientas').html(result);
                     $('#tbl_total_herramientas').css("display","block"); 
-                }
-            });
+                },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
             break;
         case "5":
             $.ajax({
@@ -60,8 +150,26 @@ function FiltrosHerramientas() {
                     $('#tbl_total_herramientas').css("display","none"); 
                     $('#tbl_total__tipo_herramientas').css("display","block"); 
                     $('#listadoTotalTipoHerramientas').html(result);
-                }
-            });
+                },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
             break;
     }
 }
@@ -144,8 +252,26 @@ function FiltroInicio() {
                     $('#listadoTransladoHerramienta').html(respuesta);
 
                 }
-            }
-        });
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
     }
 }
 
@@ -162,8 +288,26 @@ function FiltroTipoHerramientasT() {
             success: function (result) {
 
                 $('#listadoTransladoHerramienta').html(result);
-            }
-        });
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 
     } else {
 
@@ -178,8 +322,26 @@ function FiltroTipoHerramientasT() {
                     $('#listadoTransladoHerramienta').html(respuesta);
 
                 }
-            }
-        });
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
     }
 }
 
@@ -196,8 +358,26 @@ function FiltrosHerramientasU() {
             success: function (result) {
 
                 $('#listadoTransladoHerramienta').html(result);
-            }
-        });
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 
     } else {
 
@@ -212,8 +392,26 @@ function FiltrosHerramientasU() {
                     $('#listadoTransladoHerramienta').html(respuesta);
 
                 }
-            }
-        });
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
     }
 }
 function FiltroReparacionTipoc() {
@@ -237,8 +435,26 @@ function FiltroReparacionTipo() {
                 } else {
                     $('#HerramientasEnReparacion').html(respuesta);
                 }
-            }
-        })
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 
 
     } else {
@@ -249,8 +465,26 @@ function FiltroReparacionTipo() {
             url: '../BLL/Herramientas.php?opc=FiltroReparacionTipo',
             success: function (result) {
                 $('#HerramientasEnReparacion').html(result);
-            }
-        });
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
     }
 }
 
@@ -304,7 +538,25 @@ function FiltroReparacionboleta() {
         success: function (result) {
 
             $('#HerramientasEnReparacion').html(result);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
         }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
     });
 }
 
@@ -319,7 +571,25 @@ function FiltroReparacionfecha() {
         success: function (result) {
 
             $('#HerramientasEnReparacion').html(result);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
         }
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
     });
 }
 
@@ -353,8 +623,26 @@ function listarTotalHerramientas() {
                 $('#tbl_total_herramientas').css("display","block"); 
 
             }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
         }
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 }
 
 function LimpiarColorHerramienta() {
@@ -490,10 +778,28 @@ function GuardarHerramienta() {
                     $("#modalheaderAgregarHerramienta").addClass("mensajeError");
                     $("#tituloModalAgregarHerramienta").html("<strong>El Codigo ya fue ingresado</strong>");
                 }
-            }
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
 
 
-        })
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
     } else {
         $("#modalheaderAgregarHerramienta").addClass("mensajeError");
         $("#tituloModalAgregarHerramienta").html("<strong>Debes llenar todos los campos del Formulario</strong>");
@@ -542,8 +848,26 @@ function CambiarTipoHerramienta() {
                 $("#tituloModalAgregarTipo").html("<strong>Se Edito Correctamente el Tipo de Herramienta </strong>");
                 EditarlimpiarFormTipo();
                 listarTipoHerramientas();
-            }
-        })
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
     } else {
         $("#modalTipo").addClass("mensajeError");
         $("#tituloModalAgregarTipo").html("<strong>Debes llenar la Descripcion del Tipo Herramienta</strong>");
@@ -591,8 +915,26 @@ function GuardarTipoHerramienta() {
                 setTimeout(function () {
                     $('#ModalAgregarTipoHerramienta').modal('hide');
                 }, 3000);
-            }
-        })
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 
     } else {
         $("#modalTipo").addClass("mensajeError");
@@ -621,8 +963,26 @@ function listarTipoHerramientas() {
 
                 $('#listadoTipoHerramientas').html(respuesta);
             }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
         }
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 }
 
 function limpiarFormTipo(consecutivoTipo) {
@@ -696,8 +1056,26 @@ function MostrarTransladoHerramienta() {
                 $('#listadoTransladoHerramienta').html(respuesta);
 
             }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
         }
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 }
 
 function LimpiarBusquedaHerramienta() {
@@ -741,8 +1119,26 @@ function MostrarHistorial()
 
                 $('#tablareparacionestotales').html(respuesta);
             }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
         }
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 
     // ME LLENA LOS CAMPOS DEL TOTAL DE TRASLADOS DE LA Herramienta
     $.ajax({
@@ -753,8 +1149,26 @@ function MostrarHistorial()
 
                 $('#tablatrasladostotales').html(respuesta);
             }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transacción intente de nuevo "+errorMessage);
         }
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 
     // ME LLENA LOS CAMPOS DEL HISTORIAL DE LA Herramienta
 
@@ -784,8 +1198,26 @@ function MostrarHistorial()
             $("#numFactHerramienta").html(numFactura);
             $("#precioHerramienta").html(precio);
 
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transacción intente de nuevo "+errorMessage);
         }
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 
 
 }
@@ -804,8 +1236,27 @@ function AnularBoletaMaterial() {
             setTimeout(function () {
                 $('#ModalVerBoletaReparacion').modal('hide');
             }, 3000);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
         }
-    }) 
+
+    });  
     }
    
 
@@ -856,9 +1307,27 @@ function MostrarListaReparaciones() {
             } else {
                 $('#HerramientasEnReparacion').html(respuesta);
             }
-        }
-    })
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
 
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 
 }
 
@@ -882,8 +1351,27 @@ function listaEnviadas() {
                 alert("El valor se puede usar");
                 alert(resultado);
             }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
         }
-    })
+
+    });
 }
 
 
@@ -906,7 +1394,26 @@ function BuscarHerramientaNombre() {
                 $("#txtCodigoHerramientaBuscar").val("");
             }
 
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
         }
+
     });
 
 
@@ -949,9 +1456,27 @@ function TransladoHerramienta(evento) {
             } else {
                 $(evento).parents("tr").find("td").removeClass('trasladoT');
             }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
         }
 
-    })
+    });
 }
 
 function ListarTrasladoMo() {
@@ -981,8 +1506,27 @@ function ListarTrasladoMo() {
                 $("#ModalTranslado").modal("show");
                 $('#tablaMostrarTraslado').html(respuesta);
             }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
         }
-    })
+
+    });
 }
 
 function EliminarTraslado(evento) {
@@ -1000,9 +1544,27 @@ function EliminarTraslado(evento) {
 
 
             }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
         }
 
-    })
+    });
 }
 // GUARDA LA FACTURA DE LA REPARACION DE LA HERRAMIENTA Y VALIDA SUS CAMPOS
 
@@ -1084,8 +1646,27 @@ function ElaborarFactura() {
                     $('#ModalRegistrarGastos').modal('hide');
                 }, 3000);
 
-            }
-        })
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
     } else {
         $("#headermodalRegistroGastos").addClass("mensajeError");
         $("#tituloRegistrarGasto").html("<strong>Debes llenar todos los campos del Formulario</strong>");
@@ -1162,9 +1743,27 @@ function ElaborarTranslado() {
                     $("#mensajeTranslado").html("<strong>Debes Seleccionar las Herramientas a Trasladar</strong>");
 
                 }
-            }
+            },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
 
-        })
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
+
+    });
 
     } else {
         $("#modalTransladoBoleta").addClass("mensajeError");
@@ -1277,8 +1876,25 @@ function AjaxRegistroBolestasReparaciones(datos) {
 
 
 
-        }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
 
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
+        }
 
     });
 
@@ -1306,7 +1922,26 @@ function MostraBoletasReparaciones() {
                 $("#reparaciones").hide();
             }
 
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
         }
+
     });
 }
 
@@ -1328,8 +1963,27 @@ function VerBoletaReparacion(evento) {
         url: "../BLL/Herramientas.php?opc=VerBoletaReparacion&NumBoleta=" + $(evento).parents("tr").find("td").eq(0).html(),
         success: function (respuesta) {
             $("#contenidoBoletaReparacion").html(respuesta);
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo "+errorMessage);
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
         }
-    });
+
+    }); 
 
 
 }
@@ -1431,6 +2085,24 @@ function BuscarHerramientaTablaReparaciones() {
         success: function (result) {
             $('#HerramientasEnReparacion').html(result);
 
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        if (jqXHR.status === 0) {
+
+            alert('No nos pudimos Conectar con el sevidor Verifique su conexion a Internet ');
+
+        } else if (jqXHR.status == 404) {
+
+            alert('Error [404] No se encontro el Archivo');
+
+        } else if (jqXHR.status == 500) {
+
+            alert('Error de conexion con el servidor');
+
         }
 
     });
@@ -1460,7 +2132,10 @@ function BuscarTHerramienta() {
             }
 
             
-        }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
 
     }).fail(function (jqXHR, textStatus, errorThrown) {
         if (jqXHR.status === 0) {
@@ -1528,8 +2203,11 @@ function BuscarHerramientasPorCodigo() {
         success: function (respuesta) {
             $("#listadoHerramientas").html(respuesta);
             $('#tbl_total_herramientas').css("display","block"); 
-        }
-
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
     }).fail(function (jqXHR, textStatus, errorThrown) {
         if (jqXHR.status === 0) {
 
@@ -1570,7 +2248,11 @@ function  BuscarTiempoRealHerramienta(consulta) {
             $(".MostrarBusquedaHerramienta").show();
             $("#listadoHerramientas").html(respuesta);
             $('#tbl_total_herramientas').css("display","block"); 
-        }
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            alert("En este momento no podemos procesar la transaccion intente de nuevo");
+        } 
+       
     }).fail(function (jqXHR, textStatus, errorThrown) {
         if (jqXHR.status === 0) {
 
