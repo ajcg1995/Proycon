@@ -1298,7 +1298,7 @@ function ExportarHistoriaHerramienta(){
             ->setCellValue('D7', $fila['Descripcion'])
             ->setCellValue('D8', $fila['FechaIngreso'])
             ->setCellValue('D9', $fila['Procedencia'])
-            ->setCellValue('D10', $fila['Precio'])
+            ->setCellValue('D10', "¢".$fila['Precio'])
             ->setCellValue('D11', $fila['NumFactura']);
         
         
@@ -1310,13 +1310,13 @@ function ExportarHistoriaHerramienta(){
                 ->setCellValue("C$i", $fila['FechaEntrada'])
                 ->setCellValue("D$i", $fila['ID_FacturaReparacion'])
                 ->setCellValue("E$i", $fila['Descripcion'])
-                ->setCellValue("F$i", $fila['MontoReparacion']);
+                ->setCellValue("F$i", "¢".$fila['MontoReparacion']);
         $i++;
     }  
     $x=$i+1;
      $objPHPExcel->setActiveSheetIndex(0) 
                 ->setCellValue("E$x", 'Total')
-                ->setCellValue("F$x", $monto);
+                ->setCellValue("F$x", "¢".$monto);
      
     $rango = "C15:F$i";
      $i = $i+2;
@@ -1367,12 +1367,19 @@ function ExportarHistoriaHerramienta(){
       $result = $bdHerramientas->trasladosTotales($_POST['codigo']);
       $i++;
       while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-               $objPHPExcel->setActiveSheetIndex(0)                  
-                ->setCellValue("C$i", $fila['NumBoleta'])
-                ->setCellValue("D$i", $fila['Fecha'])
-                ->setCellValue("E$i", $fila['Ubicacion'])
-                ->setCellValue("F$i", $fila['Destino']);
-             $i++;
+
+
+        $objPHPExcel->setActiveSheetIndex(0)
+                ->setCellValue("C$i", $fila['Fecha'])
+                ->setCellValue("D$i", $fila['NumBoleta'])
+                
+                
+                ->setCellValue("E$i", ($fila['Ubicacion'] == "") ? "En Reparacion": $fila['Ubicacion'])
+                    
+                    
+                ->setCellValue("F$i", ($fila['Destino'] == "") ? "En Reparacion" : $fila['Destino']);
+
+        $i++;
     }
 
     $rango ="C$x:F$i";
