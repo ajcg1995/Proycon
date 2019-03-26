@@ -1379,7 +1379,6 @@ function ExportarHistoriaHerramienta(){
                     
                 ->setCellValue("F$i", ($fila['Destino'] == "") ? "En Reparacion" : $fila['Destino']);
 
-
         $i++;
     }
 
