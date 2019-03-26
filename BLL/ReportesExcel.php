@@ -1382,6 +1382,7 @@ function ExportarHistoriaHerramienta(){
         $i++;
     }
 
+    
     $rango ="C$x:F$i";
         $objPHPExcel->getActiveSheet()->getStyle($rango)->applyFromArray(array('alignment' => array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER),
         'borders' => array('allborders' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('argb' => 'FFF')))));
